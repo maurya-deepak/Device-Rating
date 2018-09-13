@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,13 +35,13 @@
     </div>
 
     <div class="form" id="forms">
-        <form id="signin" class="sign_in">
+        <form id="signin" class="sign_in" method="POST" action="phpfiles/login.php" >
             <h3>Sign-In</h3>
             <div class="inputArea">
-                <input type="text" required="" name="Email" placeholder="Username">
+                <input type="text"  name="Email" placeholder="Username">
             </div>
             <div class="inputArea">
-                <input type="Password" required="" name="password" placeholder="Password">
+                <input type="Password" name="password" placeholder="Password">
             </div>
             <div class="submit_btn">
                 <input type="submit" class="button_input"  value="sign-in" name="submit-signin">
@@ -64,6 +67,9 @@
     
 </footer>
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+
+</script>
 </body>
 </html>

@@ -105,7 +105,7 @@ color:rgb(0, 0, 0);
  outline:none;
  border:none;
  border-bottom: 2px solid rgb(28, 27, 29);
- letter-spacing: 2px;
+ /* letter-spacing: 2px; */
 }
 .sign_in .inputArea input::placeholder{
     color:rgb(10, 10, 10);
@@ -119,12 +119,11 @@ color:rgb(0, 0, 0);
     width:300px;
     height:30px;
     color:#fff;
-    background-color: #3d0280;;
+    background-color: #3d0280;
     border:none;
     font-size:20px;
-    letter-spacing: 2px;
+    /* letter-spacing: 2px; */
     border-radius: 4px;
-    cursor: pointer;
 }
 .sign_in .tosignin{
   
@@ -147,7 +146,7 @@ color:rgb(0, 0, 0);
     background: rgb(107, 16, 212);
     border-radius: 4px;
 }
-.body{
+.bo{
     background: rgba(199, 198, 198, 0.87);
 }
 /* sign up page css */
@@ -289,35 +288,34 @@ letter-spacing: 2px;
 }
 .all_data{
     position: relative;
-    margin-left: 5%;
-    margin-right:5%; 
+    margin-left:10px;
+    margin-right:10px;
     margin-top:20px;
     margin-bottom:20px; 
     padding: 10px 10px; 
     box-sizing: border-box; 
     border: 1px solid silver;
-    text-align: center;
-   
 }
 
 .data{
     position: relative;
-    margin-left:10px;
     margin-top:20px; 
+    margin-left:4%;
     margin-bottom:20px; 
-    width:40%;
-    height:400px;
+    width:20%;
+    height:300px;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border: 1px solid silver;
     box-sizing: border-box;
     border-radius: 5px;
+    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
 }
 
 .all_data .data:nth-child(1){
     background-image: url(images/m1.jpg);
-    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
+
 }
 .all_data .data:nth-child(1):hover{
     transition: .3s ease-in-out;
@@ -326,7 +324,7 @@ letter-spacing: 2px;
 }
 .all_data .data:nth-child(2){
     background-image: url(images/m2.jpg);   
-    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
+
 }
 .all_data .data:nth-child(2):hover{
     transition: .3s ease-in-out;
@@ -335,7 +333,7 @@ letter-spacing: 2px;
 }
 .all_data .data:nth-child(3){
     background-image: url(images/m3.jpg);  
-    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
+    /* box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105); */
 }
 .all_data .data:nth-child(3):hover{
     transition: .3s ease-in-out;
@@ -344,7 +342,7 @@ letter-spacing: 2px;
 }
 .all_data .data:nth-child(4){
     background-image: url(images/m4.jpg); 
-    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
+    /* box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105); */
 }
 
 .all_data .data:nth-child(4):hover{
@@ -371,7 +369,7 @@ letter-spacing: 2px;
     margin-top: 20px;
     margin-right: 20px;
     float: right;
-    width:50%;
+    width:60%;
     height:40px;
     background-color: #fff;
     border-radius: 10px;
@@ -383,7 +381,7 @@ letter-spacing: 2px;
     cursor: pointer;
 }
 .data #show_comment:hover{
-    background-color: #ff2600;
+    background-color: rgba(10, 25, 163,0.8);
     color:#fff;
 }
 .all_data .next_btn{

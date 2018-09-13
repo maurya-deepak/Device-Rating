@@ -1,37 +1,47 @@
-<?php
+<?php 
     $dbservername = "localhost";
     $dbusername = "root";
     $dbpassword = "";
     $dbname = "website_compare";
 
     $conn = mysqli_connect($dbservername,$dbusername,$dbpassword,$dbname);
-
+    
     if(isset($_POST['submit-signup']))
-    {
-        $useremail = mysqli_real_escape_string($conn, $_POST['user_email']);
+    {  
+        $email = mysqli_real_escape_string($conn, $_POST['user_email']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
-        if($useremail != ""  || $password != "")
-        {  
-           $query1 = " SELECT * FROM detail ";
-           $query = "INSERT INTO detail(user,pass) VALUES('$useremail ', '$password')";
-            
-        
-        if (mysqli_query($conn,$query) === TRUE)
-         {
-            echo "New record created successfully";
-         } 
-        else {
-            echo "Error: " . $query . "<br>" . $conn->error;
-        }
-
+        if($email == "")
+        {    
+            header("Location: ../sign_up_page.php?error=signup");
+            exit();
         }
         else{
-            header("Location: ../firstpage.php?error");
-            exit(); 
+              if($username == "")
+              {
+                header("Location: ../sign_up_page.php?error=signup");
+                exit();
+              }
+              else{
+                 if($password == "")
+                 {
+                    header("Location: ../sign_up_page.php?error=signup");
+                    exit();
+                 }
+                 else{
+                       $query = "INSERT INTO login_details(Email,username,apassword) VALUES('$email','$username ', '$password')";
+
+                        if (mysqli_query($conn,$query) === TRUE)
+                        {
+                            header("Location: ../phpfiles/compare.php");
+                            exit();
+                        } 
+                        else 
+                        {
+                            echo "Error: " . $query . "<br>" . $conn->error;
+                        }
+                 }
+              }
         }
-    }
-    else{
-        header("Location: ../firstpage.php?error");
-        exit();
     }
 ?>
