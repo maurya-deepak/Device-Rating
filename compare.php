@@ -3,16 +3,34 @@
 session_start();
 if(isset($_SESSION['name']))
 {
-echo "<h1 class='one'>Welcome</h1>"." "."<h1 style='display:inline'>".$_SESSION['name']."</h1>";
+    echo "<h1 class='one'>Welcome </h1>"." <h1 style='display:inline'>".$_SESSION['name']."</h1>";
 }
+?>
+<?php
+if(isset($_SESSION['comment']))
+{
+    echo "<p class='two'>Thank you for your rating and comment on ".$_SESSION['comment'].".</p>";
+    /* after reload session will not show */
+    unset($_SESSION['comment']);
+    // session_destroy();
+}
+
 ?>
 <style>
 .one{
     color:#3d0280;
     display:inline;
 }
+.two{
+    margin-left:20px;
+    font-size:20px;
+    color:#3d0280;;
+    display:inline
+}
 .log_out{
     margin-top:10px;
+    margin-bottom:10px;
+    margin-left:20px;
     float:right;
     display:inline;
 }
@@ -27,6 +45,9 @@ echo "<h1 class='one'>Welcome</h1>"." "."<h1 style='display:inline'>".$_SESSION[
 }
 .log_out input:hover{
     background:rgba(10, 25, 163,0.8);
+}
+.all_comment input{
+    border-radius:4px;
 }
 </style>
 <html lang="en">
@@ -43,48 +64,65 @@ echo "<h1 class='one'>Welcome</h1>"." "."<h1 style='display:inline'>".$_SESSION[
             <div class="modal_content" id="modal_content">
                 <input type="button" value="X" id="cut">
                 <h1>Please Rate</h1>
-                <form class="rate">
-                    <div id="rating5" class="ratingbox"></div>
-                    <textarea type="text" placeholder="comment" required=""></textarea>
-                    <input type="submit" value="comment">
+                <form class="rate" method="POST" action="store_rating.php">
+                    <input type="text" name="device_name" placeholder="Device Name" required="">
+                    <textarea type="text" placeholder="comment" required="" name="comment"></textarea>
+                    <input type="submit" value="comment" name="rate">
                 </form>
                 </div> 
     </div> 
-    <div class="log_out">
-        <form method="POST" action="logout.php">
-            <input type="submit" value="Log Out" name="logout">
-        </form>
-    </div>
+    <?php
+        if(isset($_SESSION['name']))
+        {
+    ?>
+        <div class="log_out">
+            <form method="POST" action="logout.php">
+                <input type="submit" value="Log Out" name="logout">
+            </form>
+        </div>
+    <?php
+        }
+    ?>
     <div class="container-compare">
         <div class="searchbar">
                     <input type="text" class="search" placeholder="serch the device...">
                     <input type ="submit" value="search" class="s_btn">
         </div>
+       
+        <div class="all_comment log_out">
+        <form method="POST" action="all_comment.php">
+            <input type="submit" value="Show comments" name="allcomment">
+        </form>
+    </div>
         <input type="button" id="add" value="Add items">
         <div class="all_data" id="all_data">
             <div class="data" id="box">
                         <div class="btn" >
+                                <label class="label">MI-4</label>
                                 <input type="button" value="Rate & comment" class="done">
                         </div> 
-                        <input type="submit" id="show_comment" value="Show Comments">            
+                        <!-- <input type="submit" id="show_comment" value="Show Comments">             -->
            </div>
             <div class="data">
                         <div class="btn">
+                                <label class="label">MI-4</label>
                                 <input type="button" value="Rate & comment" class="done">
                         </div>
-                        <input type="submit" id="show_comment" value="Show Comments">   
+                        <!-- <input type="submit" id="show_comment" value="Show Comments">    -->
             </div>
             <div class="data">
                         <div class="btn">
+                                <label class="label">MI-4</label>
                                 <input type="button" value="Rate & comment" class="done">
                         </div>
-                        <input type="submit" id="show_comment" value="Show Comments" >   
+                        <!-- <input type="submit" id="show_comment" value="Show Comments" >    -->
             </div>
             <div class="data">
                         <div class="btn">
+                                <label class="label">MI-4</label>
                                 <input type="button" value="Rate & comment" class="done">
                         </div>
-                        <input type="submit" id="show_comment" value="Show Comments">   
+                        <!-- <input type="submit" id="show_comment" value="Show Comments"> -->
             </div>
 
             <!-- <div class="next_btn">
@@ -112,6 +150,7 @@ echo "<h1 class='one'>Welcome</h1>"." "."<h1 style='display:inline'>".$_SESSION[
     </footer>
 
 <script type="text/javascript">
+      var name;
        var modal = document.getElementById('modal');
        modal.style.visibility = 'hidden';
        document.getElementById('modal_content').style.visibility = "hidden";
@@ -125,11 +164,18 @@ echo "<h1 class='one'>Welcome</h1>"." "."<h1 style='display:inline'>".$_SESSION[
     //    rate_array[4].onclick = open_modal;
 
 // for creating new elements
-        document.getElementById("add").onclick =  create_items;
+        document.getElementById("add").onclick  =  create_items;
         function create_items(e)
         {
-            e.preventDefault();
-            var alldata = document.getElementById("all_data");
+            // e.preventDefault();
+           name =  prompt("Enter Name of device");
+           if(name == null || name == ""){
+            alert("Name is INVALID.Please provide valid name.");
+           }
+           else{
+           var label = document.createElement("label");
+
+           var alldata = document.getElementById("all_data");
 
             var div1 = document.createElement("div");
             div1.setAttribute("class","data");
@@ -151,19 +197,25 @@ echo "<h1 class='one'>Welcome</h1>"." "."<h1 style='display:inline'>".$_SESSION[
             div1.appendChild(div2);
             div1.appendChild(input2);
 
+            
+            div2.appendChild(label);
+            label.setAttribute("class","label");
+            label.innerHTML = name;
+
             div2.appendChild(input1);
 
             input1.onclick = open_modal;
-      
 
-        }
+           }
+        
+    }
        
        var data = document.getElementById("all_data").querySelectorAll('[type=button]');
        var no_of_child = document.querySelectorAll('.data').length;
 
        for(i=0;i<no_of_child;i++)
        {
-           data[i].onclick = open_modal;
+           data[i].onclick = open_modal;    
        }
 
        function open_modal(e)

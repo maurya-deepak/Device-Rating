@@ -25,7 +25,7 @@
             <input type="Password" name="password"  placeholder="  Password" >   
         </div>
         <div class="submit_btn">
-                <a href="phpfiles/compare.php"><input type="submit" id="submit" class="button_input" value="sign-up" name="submit-signup" ></a>
+                <input type="submit" id="submit" class="button_input" value="sign-up" name="submit-signup">
         </div>
         <div class="back_btn">
             <a href="firstpage.php"><input type="button" name="back" value="back" ></a>

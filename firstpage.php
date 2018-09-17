@@ -1,5 +1,6 @@
 <?php 
 session_start();
+unset($_SESSION['name']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@ session_start();
             <ul id="list">
                 <li class="current"><a href="#">Home</a></li>
                 <!-- <li><a href="#forms">Join us</a></li> -->
-                <li><a href="compare.php">Compare</a></li>
+                <li><a href="phpfiles/compare.php">Compare</a></li>
                 <li><a href="#about">About Us</a></li>
             </ul>
             <div style="clear:both"></div>
