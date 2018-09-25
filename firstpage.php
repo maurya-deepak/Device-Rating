@@ -15,17 +15,17 @@ unset($_SESSION['name']);
 
 <body>
 <div class="none">
+
     <header class="header"> 
-            <nav>
-                <a href="firstpage.php"><img  src="images/comp.jpg" class="logo"></a> 
-                <h1><a href="firstpage.php">Compare Anything</a></h1>
+            <nav class="nav">
+                <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
+                <h1><a href="firstpage.php">Compare<span style="color:#3d0280;">Anything</span></a></h1>
             <ul id="list">
-                <li class="current"><a href="#">Home</a></li>
+                <li class="current"><a href="">Home</a></li>
                 <!-- <li><a href="#forms">Join us</a></li> -->
-                <li><a href="phpfiles/compare.php">Compare</a></li>
+                <li><a href="#" onclick="popup()">Compare</a></li>
                 <li><a href="#about">About Us</a></li>
             </ul>
-            <div style="clear:both"></div>
         </nav>
     </header>
 
@@ -52,6 +52,49 @@ unset($_SESSION['name']);
         </form>
     </div>
 </div>
+
+<div class="information">
+    <div class="info_head">
+     <h1>Top Trending Brands With Greate Features...</h1>
+    </div>
+    <div class="box1">
+    </div>
+    <div class="card_data">
+            <h2>Google Pixel 2 XL</h2>
+            <h3>A camera so good it deserves unlimited smart storage.</h3>
+            <p>Capture every detail and access all your photos from any device.</p>
+    </div>
+
+    <div class="box2">
+    </div>
+    <div class="card_data" id="card_data2">
+       <!-- <h2>iPhone X Plus</h2> -->
+       <h3>The screen is gorgeous.</h3>
+       <p>The iPhone X marks the first time that Apple has used an OLED panel on a smartphone, and the difference over the old LCD displays is clear.</p>
+    </div>
+
+    <div class="box1 box3">
+    </div>
+    <div class="card_data" id="card_data3">
+       <h3>SAMSUNG GALAXY NOTE 9 FEATURE</h3>
+       <ul>
+           <li>DISPLAYS- 6.4 inches dual curved display</li>
+           <li>PROCESSOR- snapdragon 850 CPU</li>
+           <li>RAM- 8GB/10GB DDR4</li>
+           <li>CAMERAS- (12MP+12MP) rear/(8MP+8MP) front</li>
+           <li>BATTERY- 3900mAh</li>
+           <li>STORAGE- 128GB/256GB</li>
+           <li>Sensor- In-display Fingerprint</li>
+       </ul>   
+       
+    </div>
+
+</div>
+
+<div class="what_user_says">
+        <input type="button" name="what_user_says" value="Check Out What User's Says ... " onclick="popup()">
+</div>
+    
 <div class="about" id="about">
     <h3>About Us</h3>
     <p>I think that humans have a huge capacity to carry pain and sadness. <br>
@@ -68,9 +111,14 @@ unset($_SESSION['name']);
     
 </footer>
 
-<script type="text/javascript">
+<script src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="header.js"></script>
 
+<script>
 
+function popup() {
+    alert("Please Sign Up.");
+}
 </script>
 </body>
 </html>
