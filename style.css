@@ -28,6 +28,7 @@ ul{
     margin-top:10px; 
     padding: 0;
     float: right;
+
 }
 .header nav ul li{
     list-style: none;
@@ -401,32 +402,55 @@ color:#fff;
   margin-left:20%;
   margin-right:15%;
   display: block;
+  text-align: center;
 }
 
  .searchbar input[type="text"]{
     width: 80%;
-    height:30px;
+    height:35px;
     letter-spacing: 1px;
-    padding-left:5px;
+    padding:0px 15px;
     font-size: 18px;
     border: 2px solid silver;
-    border-radius: 1em
+    border-radius: 1.5em;
+    outline:none;
 }
-
+.searchbar i{
+    position: absolute;
+    top:93px;
+    left:77%;
+    color:silver;
+    font-size: 20px;   
+}
+.searchbar input[type="text"]:focus{
+    border: 2px solid #3d0280;
+    
+}
+.searchbar input[type="text"]:focus ~ i{
+    
+    color:#3d0280
+}
 .searchbar #add{
     position: relative;
     margin:10px 0px;
     padding-left: 20px;
     padding-right: 20px;
-    height:30px;
-    background: rgb(163, 167, 204);
-    border: none;
+    width:70%;
+    height:35px;
+    background: transparent;
+    border:2px solid #3d0280;
     color:rgb(10, 10, 10);
     letter-spacing: 2px;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 1.5em;
+    outline: none;
     cursor: pointer;
+    transition:.6s ease-in-out; 
     
+}
+.searchbar #add:hover{
+    color:#fff;
+    background: #3d0280;
 }
  .s_btn{
     margin: 0;
@@ -445,7 +469,7 @@ color:#fff;
     margin-bottom:20px; 
     padding: 10px 10px; 
     box-sizing: border-box; 
-    border: 1px solid silver;
+    /* border: 1px solid silver; */
 }
 
 .data{

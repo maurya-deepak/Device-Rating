@@ -84,6 +84,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="..\style.css">
     <title>CompareAnything | Welcome </title>
 </head>
@@ -144,8 +145,7 @@
         <div class="searchbar">
                     <input type="text" class="search" placeholder="search your device here..." id="search">
                     <!-- <input type ="submit" value="search" class="s_btn"> -->
-                    <input type="button" id="add" value="Not find your device ? Add device">
-        
+                    <i class="fa fa-search" aria-hidden="true"></i>        
         </div>
         <div class="all_data" id="all_data">
 
@@ -164,10 +164,9 @@
            <?php
             }
            ?>
-            <!-- <div class="next_btn">
-                <input type="button" id="next">
-            </div> -->
-
+           <div class="searchbar">
+            <input type="button" id="add" value="Not find your device ? Add device">
+        </div>
         </div>
 </div>
 <!-- about section -->
