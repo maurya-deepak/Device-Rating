@@ -69,9 +69,10 @@ ul{
 .none{
     min-height: 700px;
     min-width: 100%;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('images/body.jpg');
+    /* background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('images/m3.jpg'); */
     background-repeat: no-repeat;
     background-size: 100% 100%; 
+
 }
 .container{
     position: relative;;
@@ -108,6 +109,8 @@ ul{
   margin-right:90px;
   background-color:rgba(255, 255, 255, 0.9);
   border-radius: 4px;
+  overflow: hidden;
+  display: block;
 }
 .sign_in{
     text-align: center;
@@ -135,7 +138,6 @@ color:rgb(0, 0, 0);
 }
 .sign_in .submit_btn{
     margin-top:30px;
-  
 }
 .sign_in .button_input{
     width:300px;
@@ -144,15 +146,16 @@ color:rgb(0, 0, 0);
     background-color: #3d0280;
     border:none;
     font-size:20px;
-    /* letter-spacing: 2px; */
+    letter-spacing: 2px;
     border-radius: 4px;
+    cursor: pointer;
 }
 .sign_in .tosignin{
-  
     margin-top:40px;
     letter-spacing: 2px;
     color:rgb(10, 25, 163);
     float:right;
+   
     
 }
 .sign_in a .tosignup{
@@ -241,82 +244,101 @@ letter-spacing: 2px;
     position: relative;
     overflow: hidden;
     border-bottom:2px solid silver;
+    text-align: center;
 } 
 .info_head{
+    position: relative;
     margin:30px auto;
     text-align: center;
+    overflow:auto;
 }
 .info_head h1{
     color:blue; 
 }
 
 .box1{
-    margin-top:20px;
-    background: url("images/googlepixel.jpg.png");
+    background:linear-gradient(rgba(70, 69, 69, 0.4),rgba(204, 203, 203, 0.2)),url("images/googlepixel.jpg.png");
     width:100%;
     height: 500px;
     background-repeat: no-repeat;
     background-size:100% 100%;
     border-radius: 5px;
+    border-top:8px solid rgb(19, 18, 18);
+    box-shadow: -1px 11px 17px -4px rgba(111,128,113,1);
 }
+
 .card_data{
-    width:350px;
-    height:350px;
-    background:rgba(92, 92, 92, 0.8);
-    margin-left:650px;
-    margin-top:-140px;
-    margin-bottom:20px; 
     padding: 20px 20px;
     text-align: center;
-    color:#fff;
     box-sizing: border-box;
     border-radius: 3px;
+    height:500px;
 }
 .card_data h2{
     font-size:40px;
     padding:10px 10px;
+    margin-top:140px;
+    color:rgba(255, 255, 255, 0.89);
+    text-shadow: 0 1px 0 black;
 }
 .card_data h3{
     font-size:30px;
-    margin-top:10px;
+    margin-top:20px;
     padding:5px 5px;
-    color:rgb(65, 65, 70);
+    color:#2D3142;
+    text-shadow: 0 1px 0 black;
 }
 .card_data p{
-    font-size:20px;
+    margin-top:20px;
+    font-size:24px;
     padding:5px 5px;
+    color:#fff;
+    text-shadow: 0 1px 0 rgb(235, 231, 231);
 }
-
 
 .box2{
     margin-top:20px;
-    background: url("images/iphonexplus.jpg");
+    margin-bottom:20px;
+    background:linear-gradient(rgba(70, 69, 69, 0.8),rgba(204, 203, 203, 0.8)),url("images/iphonexplus.jpg");
     width:100%;
     height: 500px;
     background-repeat: no-repeat;
     background-size:100% 100%;
     border-radius: 5px;
+    border-top:8px solid rgb(19, 18, 18);
+    box-shadow: -1px 11px 17px -4px rgba(111,128,113,1);
 }
-#card_data2{
-    margin-left:20px;
+.box2 h3{
+    margin-top:120px;
+    color:#B0FBFf;
+
 }
-#card_data2 h3{
-    color:rgb(0, 0, 0);
-}
+
 .box3{
-    background: url("images/sam.jpg");
+    background:linear-gradient(rgba(70, 69, 69, 0.9),rgba(204, 203, 203, 0.5)),url("images/sam.jpg");
     width:100%;
     height: 500px;
     background-repeat: no-repeat;
     background-size:100% 100%;
+    box-shadow: -1px 11px 17px -4px rgba(111,128,113,1);
 }
-#card_data3 h3{
-color:#fff;
+.box3 h3{ 
+    margin-top:110px;
+    color:rgb(176, 237, 255);
+    text-shadow: 0 1px 0 black;
+   
 }
-#card_data3 ul li{
-    line-height: 24px;
-    font-size:18px;
+.box3 ul{
+    margin-top:30px;
+    list-style: none;
 }
+.box3 ul li{
+    color:#2D3142;
+    text-shadow: 0 1px 0 rgb(0, 0, 0);
+    font-size:24px;
+    line-height: 1.5;
+
+} 
 
 .what_user_says{
   margin-top:30px;
@@ -446,7 +468,6 @@ color:#fff;
     outline: none;
     cursor: pointer;
     transition:.6s ease-in-out; 
-    
 }
 .searchbar #add:hover{
     color:#fff;

@@ -1,6 +1,6 @@
 <?php 
-session_start();
-unset($_SESSION['name']);
+// session_start();
+// unset($_SESSION['name']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,24 +14,25 @@ unset($_SESSION['name']);
 </head>
 
 <body>
-<div class="none">
+<div class="none" id="none">
 
     <header class="header"> 
             <nav class="nav">
                 <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-                <h1><a href="firstpage.php">Compare<span style="color:#3d0280;">Anything</span></a></h1>
+                <h1><a href="firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
             <ul id="list">
                 <li class="current"><a href="">Home</a></li>
                 <!-- <li><a href="#forms">Join us</a></li> -->
-                <li><a href="#" onclick="popup()">Compare</a></li>
+                <li><a href="#" onclick="popup()">Rate</a></li>
                 <li><a href="#about">About Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container">
-        <h1>Comapre With Love</h1>
-        <p>Here you can comapre the latest devices & there features and <br> give your rating as feedback which will be useful for your other friend user.</p>
+    <div class="container" id="container">
+        
+        <h1>Rate The Devices With Love</h1>
+        <p>Here you can compare the latest devices & there features and <br> give your rating as feedback which will be useful for your other friend user.</p>
         <h2>Enjoy Comparing And Rating.</h2>
     </div>
 
@@ -40,10 +41,23 @@ unset($_SESSION['name']);
             <h3>Sign-In</h3>
             <div class="inputArea">
                 <input type="text"  name="Email" placeholder="Username">
+               <?php
+                    if(isset($_SESSION['EMAIL']))
+                    {
+                        echo "<p>".$_SESSION['EMAIL']."</p>";
+                    }
+                ?>
             </div>
             <div class="inputArea">
                 <input type="Password" name="password" placeholder="Password">
+                <?php
+                    if(isset($_SESSION['PASSWORD']))
+                    {
+                        echo "<p>".$_SESSION['PASSWORD']."</p>";
+                    }
+                ?>
             </div>
+
             <div class="submit_btn">
                 <input type="submit" class="button_input"  value="sign-in" name="submit-signin">
             </div>
@@ -58,36 +72,38 @@ unset($_SESSION['name']);
      <h1>Top Trending Brands With Greate Features...</h1>
     </div>
     <div class="box1">
+        <div class="card_data">
+                <h2>Google Pixel 2 XL</h2>
+                <h3>A camera so good it deserves unlimited smart storage.</h3>
+                <p>Capture every detail and access all your photos from any device.</p>
+        </div>
     </div>
-    <div class="card_data">
-            <h2>Google Pixel 2 XL</h2>
-            <h3>A camera so good it deserves unlimited smart storage.</h3>
-            <p>Capture every detail and access all your photos from any device.</p>
-    </div>
+   
 
     <div class="box2">
-    </div>
-    <div class="card_data" id="card_data2">
-       <!-- <h2>iPhone X Plus</h2> -->
-       <h3>The screen is gorgeous.</h3>
-       <p>The iPhone X marks the first time that Apple has used an OLED panel on a smartphone, and the difference over the old LCD displays is clear.</p>
+        <div class="card_data">
+        <!-- <h2>iPhone X Plus</h2> -->
+        <h3>The screen is gorgeous.</h3>
+        <p>The iPhone X marks the first time that Apple has used an OLED panel on a smartphone, and the difference over the old LCD displays is clear.</p>
+        </div>
     </div>
 
+
     <div class="box1 box3">
+        <div class="card_data" id="card_data3">
+            <h3>SAMSUNG GALAXY NOTE 9 FEATURE</h3>
+            <ul>
+                <li>DISPLAYS- 6.4 inches dual curved display</li>
+                <li>PROCESSOR- snapdragon 850 CPU</li>
+                <li>RAM- 8GB/10GB DDR4</li>
+                <li>CAMERAS- (12MP+12MP) rear/(8MP+8MP) front</li>
+                <li>BATTERY- 3900mAh</li>
+                <li>STORAGE- 128GB/256GB</li>
+                <li>Sensor- In-display Fingerprint</li>
+            </ul>   
+        </div>
     </div>
-    <div class="card_data" id="card_data3">
-       <h3>SAMSUNG GALAXY NOTE 9 FEATURE</h3>
-       <ul>
-           <li>DISPLAYS- 6.4 inches dual curved display</li>
-           <li>PROCESSOR- snapdragon 850 CPU</li>
-           <li>RAM- 8GB/10GB DDR4</li>
-           <li>CAMERAS- (12MP+12MP) rear/(8MP+8MP) front</li>
-           <li>BATTERY- 3900mAh</li>
-           <li>STORAGE- 128GB/256GB</li>
-           <li>Sensor- In-display Fingerprint</li>
-       </ul>   
-       
-    </div>
+
 
 </div>
 
@@ -112,13 +128,37 @@ unset($_SESSION['name']);
 </footer>
 
 <script src="jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="header.js"></script>
+<!-- <script type="text/javascript" src="header.js"></script> -->
 
 <script>
-
+window.onload = changeImage;
 function popup() {
     alert("Please Sign Up.");
 }
+
+var i=0;
+var images = [];
+var time = 5000 ;
+
+images[0] = "images/m3.jpg";
+images[1] = "images/m2.jpg";
+images[2] = "images/body.jpg";
+images[3] = "images/googlepixel.jpg.png";
+images[4] = "images/sam.jpg";
+
+function changeImage() {
+    document.getElementById("none").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('"+images[i]+"')";
+    document.getElementById("none").style.transition = ".5s ease-in infinite"
+    if(i < images.length -1)
+    {
+        i++;
+    }
+    else{
+        i=0;
+    }
+    setTimeout(" changeImage()",time);
+}
+
 </script>
 </body>
 </html>
