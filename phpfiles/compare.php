@@ -8,7 +8,7 @@
     top:0px;
     left:0;
     margin:0;
-    padding:0;
+    padding:0;  
     display:inline;
     color:#3d0280;
 }
@@ -79,6 +79,12 @@
 .all_comment input:hover{
     color:#fff;
 }
+.commented
+{
+position:absolute;
+top:0;
+left:30%;
+}
 .like i{
  margin-left:10px;
  font-size:25px;
@@ -143,7 +149,7 @@
         if(isset($_SESSION['comment']))
         {
             // prints on which device user commented
-            echo "<script>alert('Thank you for your rating and comment on ".$_SESSION['comment']."')</script>";
+            echo "<p class='welcome commented'>Thank you for your rating and comment on ".$_SESSION['comment']."</p>";
             /* after reload session will not show */
             unset($_SESSION['comment']);
             // session_destroy();

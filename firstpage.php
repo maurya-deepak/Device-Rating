@@ -1,7 +1,9 @@
 <?php 
-// session_start();
-// unset($_SESSION['name']);
+
+session_start();
+unset($_SESSION['name']);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="style.css">
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        $("#sign-in").click(function()
+        {
+            $("#email_error").remove();
+            $("#pass_error").remove();
+            var email = $("#Email").val() ;
+            var pass  = $("#password").val() ;
+            if(email == "")
+            {
+                $("#Email").after("<p id='email_error'>Username is required.</p>");  
+            }
+            else{
+                if(pass == "")
+                {
+                    $("#password").after("<p id='pass_error'>Password is required.</p>");
+                }
+                else{
+                    $.ajax({
+                        type: "POST",
+                        url: "phpfiles/login.php",
+                        data: 'username=' +email + '&password=' +pass,
+                        success: function(data) {
+                            if(data == 0)
+                            {
+                                $("#sign-in").after("<p id='pass_error'>Username or Password is incorrect.</p>");
+                            }
+                            else{
+                                window.location.href = "phpfiles/compare.php";
+                            }
+                        },
+                    });
+                }
+            }
+        });
+   
+});
+    </script>
     <title>CompareAnything | Welcome </title>
 </head>
 
@@ -37,29 +78,18 @@
     </div>
 
     <div class="form" id="forms">
-        <form id="signin" class="sign_in" method="POST" action="phpfiles/login.php" >
+        <form id="signin" class="sign_in">
             <h3>Sign-In</h3>
             <div class="inputArea">
-                <input type="text"  name="Email" placeholder="Username">
-               <?php
-                    if(isset($_SESSION['EMAIL']))
-                    {
-                        echo "<p>".$_SESSION['EMAIL']."</p>";
-                    }
-                ?>
+                <input type="text"  name="Email" placeholder="Username" id="Email">
             </div>
+           
             <div class="inputArea">
-                <input type="Password" name="password" placeholder="Password">
-                <?php
-                    if(isset($_SESSION['PASSWORD']))
-                    {
-                        echo "<p>".$_SESSION['PASSWORD']."</p>";
-                    }
-                ?>
+                <input type="Password" name="password" placeholder="Password" id="password">
             </div>
-
+           
             <div class="submit_btn">
-                <input type="submit" class="button_input"  value="sign-in" name="submit-signin">
+                <input type="button" class="button_input"  value="sign-in" name="submit-signin" id="sign-in">
             </div>
             <a href="sign_up_page.php"><input type="button" class="tosignup" name="signup" value="Not a member ? Sign-Up"></a>
             <a href="" class="tosignin">Forgot password?</a>
@@ -127,7 +157,6 @@
     
 </footer>
 
-<script src="jquery-3.3.1.min.js"></script>
 <!-- <script type="text/javascript" src="header.js"></script> -->
 
 <script>
@@ -158,6 +187,9 @@ function changeImage() {
     }
     setTimeout(" changeImage()",time);
 }
+
+
+
 
 </script>
 </body>

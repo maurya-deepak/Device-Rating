@@ -150,13 +150,15 @@ color:rgb(0, 0, 0);
     border-radius: 4px;
     cursor: pointer;
 }
+.form p
+{
+    color:red;
+}
 .sign_in .tosignin{
     margin-top:40px;
     letter-spacing: 2px;
     color:rgb(10, 25, 163);
-    float:right;
-   
-    
+    float:right;  
 }
 .sign_in a .tosignup{
     width:250px;
@@ -234,6 +236,9 @@ letter-spacing: 2px;
     color:#fff;
     text-transform: uppercase;
     border-radius: 4px;
+}
+.sign-up p {
+    color:red;
 }
 /* information section */
 .information{
