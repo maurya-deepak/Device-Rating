@@ -99,9 +99,10 @@ unset($_SESSION['name']);
 
 <div class="information">
     <div class="info_head">
-     <h1>Top Trending Brands With Greate Features...</h1>
+     <h1>Top Trending Brands With Great Features...</h1>
     </div>
-    <div class="box1">
+    <div class="box box1">
+        <img src="images/googlepixel.jpg.png" alt="BOX1 IMAGE">
         <div class="card_data">
                 <h2>Google Pixel 2 XL</h2>
                 <h3>A camera so good it deserves unlimited smart storage.</h3>
@@ -110,7 +111,8 @@ unset($_SESSION['name']);
     </div>
    
 
-    <div class="box2">
+    <div class="box box2">
+        <img class="img_i" src="images/iphone_xs_large.jpg" alt="BOX2 IMAGE">
         <div class="card_data">
         <!-- <h2>iPhone X Plus</h2> -->
         <h3>The screen is gorgeous.</h3>
@@ -119,7 +121,8 @@ unset($_SESSION['name']);
     </div>
 
 
-    <div class="box1 box3">
+    <div class="box box3">
+        <img src="images/sam.jpg" alt="BOX3 IMAGE">
         <div class="card_data" id="card_data3">
             <h3>SAMSUNG GALAXY NOTE 9 FEATURE</h3>
             <ul>
