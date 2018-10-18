@@ -283,8 +283,8 @@ left:30%;
             document.getElementById('modal_content').style.visibility = "hidden";
             data.style.animation = "popin 350ms ease-in-out 1 forwards";
             document.getElementById('modal_content').style.animation = "popin 350ms ease-in-out 1 forwards";
-            document.getElementById('device').value="";
-            document.getElementById('comment').value="";
+            // document.getElementById('device').value="";
+            // document.getElementById('comment').value="";
         }
         // search devices
         var items = document.getElementById("all_data").querySelectorAll("#box");
@@ -306,12 +306,12 @@ left:30%;
     }
 
 
-     var like_value = document.getElementById("like");
-      like_value.onclick = liked ;
-    function liked() {
-        var id_number = this.id;
-        document.getElementById("1").style.color= "blue";
-    }
+    //  var like_value = document.getElementById("like");
+    //   like_value.onclick = liked ;
+    // function liked() {
+    //     var id_number = this.id;
+    //     document.getElementById("1").style.color= "blue";
+    // }
     </script>
 </body>
 </html>

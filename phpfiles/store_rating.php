@@ -8,13 +8,18 @@ if(isset($_POST['rate']))
   // $device_name = mysqli_real_escape_string($conn,$_POST['device_name']);
   $device_name = mysqli_real_escape_string($conn,$_POST['device_name']);
   $comment = mysqli_real_escape_string($conn,$_POST['comment']);
+
+  date_default_timezone_set('India/Mumbai');
+  $date = date('d/m/Y');
+
   $usern = $_SESSION['name'];
     if($usern!='')
     {
-        $sql = "INSERT INTO ratings(username,device_name,comment) VALUES('$usern','$device_name','$comment')";
+        $sql = "INSERT INTO ratings(username,device_name,comment,com_date) VALUES('$usern','$device_name','$comment','$date')";
         if(mysqli_query($conn,$sql) === TRUE)
         {
-          $_SESSION['comment'] = $device_name ;
+          $_SESSION['device_name'] = $device_name ;
+         
           header("Location: ../phpfiles/compare.php");
           exit();
         }

@@ -36,14 +36,19 @@ unset($_SESSION['name']);
                         url: "phpfiles/login.php",
                         data: 'username=' +email + '&password=' +pass,
                         success: function(data) {
-                            if(data == 0)
+                            if(data == "failed")
                             {
+                               
                                 $("#sign-in").after("<p id='pass_error'>Username or Password is incorrect.</p>");
                             }
                             else{
-                                window.location.href = "phpfiles/compare.php";
+                                if(data == "Success")
+                                {
+                                 window.location.href = "phpfiles/compare.php"; 
+                              
+                                }
                             }
-                        },
+                       },
                     });
                 }
             }

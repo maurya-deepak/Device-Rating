@@ -3,7 +3,7 @@ modal.style.visibility = 'hidden';
 document.getElementById('modal_content').style.visibility = "hidden";
 
 var data = document.getElementById("content").querySelectorAll('[type=button]');
-var no_of_child = document.querySelectorAll('.reply').length;
+var no_of_child = document.querySelectorAll('.reply_btn').length;
 
 for(i=0;i<no_of_child;i++)
 {
@@ -31,6 +31,6 @@ function open_modal()
             document.getElementById('modal_content').style.visibility = "hidden";
             data.style.animation = "popin 350ms ease-in-out 1 forwards";
             document.getElementById('modal_content').style.animation = "popin 350ms ease-in-out 1 forwards";
-            // document.getElementById('device').value="";
-            // document.getElementById('comment').value="";
+            document.getElementById('device').value="";
+            document.getElementById('comment').value="";
         }

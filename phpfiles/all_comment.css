@@ -10,44 +10,40 @@ body{
   height:100%;
   background-color:#3d0280;
   float: left;
+
 }
+
 .aside ul{
     margin:0;
     padding:0;
 }
 .aside ul li{
-    display: block;
+    /* display: block; */
     margin:0;
-    padding: 0; 
     list-style:none;
     border-bottom:2px solid rgba(255,255,255,0.4);  
-    padding:20px 20px;  
-
+    padding:20px 60px;
+    
+}
+.aside ul li:hover{
+    cursor: pointer;
 }
 .aside ul li input{
     background:transparent;
     border:none;
     color:#fff;
     font-size:22px;
-    cursor: pointer;
+    outline: none;
+   
 }
 .aside ul li input:hover{
-    color:rgba(255,255,255,0.6)
-}
-.content{
-    width:79%;
-    float: right;
-}
+    color:rgba(255,255,255,0.3);
+    cursor: pointer;
 
-.comment{
-    border-bottom:2px solid silver;
 }
 
 #form{
     display: inline;
-}
-.head{
-    border-bottom:4px solid silver;
 }
 .searchbar{
     margin-top:30px;
@@ -63,13 +59,4 @@ body{
       height:30px;
       letter-spacing: 2px;
       padding-left:5px;
-  }
-.s_btn{
-      margin: 0;
-      padding: 0;
-      width:80px;
-      background: #3d0280;
-      color:#fff;
-      letter-spacing: 2px;
-      border: none;
   }
