@@ -102,15 +102,24 @@ ul{
 }
 /* sign in page css  */
 .form{
-  width:440px;
+  min-width:440px;
   min-height: 450px; 
-  float:right;
-  margin-top:90px;
-  margin-right:90px;
+  position: absolute;
+  top:140px;
+  right:30px;
   background-color:rgba(255, 255, 255, 0.9);
   border-radius: 4px;
   overflow: hidden;
-  display: block;
+
+}
+#close_form{
+float:right;
+width:30px;
+height:30px;
+border:none;
+background: #3d0280;
+color:#fff;
+border-radius: 4px;
 }
 .sign_in{
     text-align: center;
@@ -245,6 +254,8 @@ letter-spacing: 2px;
     margin-top:30px;
     margin-left:10%;
     margin-right:10%;
+    margin-bottom:30px;
+    padding: 1px;
     overflow:hidden;
     position: relative;
     overflow: hidden;
@@ -278,14 +289,19 @@ letter-spacing: 2px;
     box-sizing: border-box;
     border-radius: 3px;
     height:500px;
+    
 }
+
 .card_data h2{
     font-size:40px;
     padding:10px 10px;
     margin-top:140px;
     color:rgba(255, 255, 255, 0.89);
+    overflow: hidden;
     text-shadow: 0 1px 0 black;
+  
 }
+
 .card_data h3{
     font-size:30px;
     margin-top:20px;
@@ -315,7 +331,7 @@ letter-spacing: 2px;
 }
 .box2 h3{
     margin-top:120px;
-    color:#B0FBFf;
+    color:rgb(12, 26, 31);
 
 }
 
@@ -329,16 +345,17 @@ letter-spacing: 2px;
 }
 .box3 h3{ 
     margin-top:110px;
-    color:rgb(176, 237, 255);
+    color:rgb(12, 26, 31);
     text-shadow: 0 1px 0 black;
    
 }
 .box3 ul{
     margin-top:30px;
     list-style: none;
+    white-space: nowrap;
 }
 .box3 ul li{
-    color:#2D3142;
+    color:#2D2E67;
     text-shadow: 0 1px 0 rgb(0, 0, 0);
     font-size:24px;
     line-height: 1.5;
@@ -354,6 +371,8 @@ letter-spacing: 2px;
 .what_user_says input{
     width:100%;
     padding:10px 10px;
+    text-align: center;
+    white-space:normal;
     font-size:22px;
     letter-spacing: 2px;
     background-color: transparent;
@@ -363,7 +382,8 @@ letter-spacing: 2px;
     transition: 0.4s ease-in-out;
 }
 .what_user_says input:hover{
-    background-color: blue;
+    background: #3d0280;
+    border:none;
     color:#fff;
 }
  /* about section */
@@ -395,15 +415,19 @@ letter-spacing: 2px;
 }
 
 .footer{
-    min-height: 100px;
+    text-align: center;
+    min-height: 200px;
     margin: 0;
     overflow: auto;
 }
 .footer h4{
+    margin-top:28px;
     font-size:20px;
-    display: inline;
 }
-.footer img{
+.footer_cont_img{
+margin-top:30px;
+}
+.footer_cont_img img{
     border-radius: 4px;
     padding: 2px 2px 2px 2px ;
     margin-top: 25px;
@@ -412,20 +436,71 @@ letter-spacing: 2px;
     width:50px;
     height:50px;
 }
-
-@media screen and (max-width: 400px) {
+.hide_sign_up{
+    position: absolute;
+    top:65px;
+    left:37%;
+}
+#hide_sign_up{
+    display: none;
+}
+@media screen and (max-width: 1100px) {
     .header nav ul{
         display: none;
     }
     .form{
-        float:none;
-        display: block;
-        margin-top:100px;
-    }   
+        min-width:300px;
+        max-width: 460px;
+        left:30px;
+    
+    }
     .form .sign_in{
         margin-top:30px;
     }
+    .information{
+        margin:0;
+    }
+    #sign_up_in{
+       display: block; 
+    }
+    .card_data{
+        padding: 0;
+    }
+    .card_data h2{
+        margin-top:70px;
+    }
+    .what_user_says input{
+        border:none;
+        background: #3d0280;
+        color:#FFF;
+    }
+    .footer{
+        text-align: center;
+        display: block;
+    }
+    .footer_cont_img img{
+        margin:10px 13px;
+        width:35px;
+        height:35px;
+    }
 }
+.hide_sign_up 
+{
+    display: inline;
+}
+.hide_sign_up input{
+    width:100px;
+    height:40px;
+    padding:10px 10px;
+    background: #3d0280;
+    color:#fff;
+    border:none;
+    letter-spacing: 2px;
+    border-radius: 4px;
+}
+
+/*Firstpage.php css ends here and compare.php code strts::::::*/
+
 .container-compare{
     margin: 0 ;
     padding: 0;
@@ -436,11 +511,24 @@ letter-spacing: 2px;
     min-height: 100vh;
     min-width: 100%;
 }
+.setting_show{
+    position: absolute;
+    right:10px;
+    display: block;
+}
+.setting_show input{
+    color:#fff;
+}
+.sidenav .all_comment{
+    display: block;
+}
+
  .searchbar{
   margin-top:30px;
   margin-bottom:30px;
   margin-left:20%;
   margin-right:15%;
+  white-space: normal;
   display: block;
   text-align: center;
 }
@@ -470,6 +558,7 @@ letter-spacing: 2px;
     
     color:#3d0280
 }
+
 .searchbar #add{
     position: relative;
     margin:10px 0px;
@@ -491,7 +580,7 @@ letter-spacing: 2px;
     color:#fff;
     background: #3d0280;
 }
- .s_btn{
+ /* .s_btn{
     margin: 0;
     padding: 0;
     width:80px;
@@ -499,7 +588,7 @@ letter-spacing: 2px;
     color:#fff;
     letter-spacing: 2px;
     border: none;
-}
+} */
 .all_data{
     position: relative;
     margin-left:10px;
@@ -536,33 +625,7 @@ letter-spacing: 2px;
 
 
 }
-/* .all_data .data:nth-child(2){
-    background-image: url(images/m2.jpg);   
 
-} */
-/* .all_data .data:nth-child(2):hover{
-    transition: .3s ease-in-out;
-    box-shadow:2px 3px 20px rgb(24, 23, 23);
-    
-}
-.all_data .data:nth-child(3){
-    background-image: url(images/m3.jpg);  
-    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
-}
-.all_data .data:nth-child(3):hover{
-    transition: .3s ease-in-out;
-    box-shadow:2px 3px 20px rgb(24, 23, 23);
-    
-}
-.all_data .data:nth-child(4){
-    background-image: url(images/m4.jpg); 
-    box-shadow:2px 4px 5px rgb(105, 105, 105),-2px 0px 5px rgb(105, 105, 105);
-}
-
-.all_data .data:nth-child(4):hover{
-    transition: .3s ease-in-out;
-    box-shadow:2px 3px 20px rgb(24, 23, 23);
-} */
 .btn{
     text-align: center;
 }
@@ -732,3 +795,30 @@ letter-spacing: 2px;
     font-size: 20px;
 }
 
+html { font-size:100%; } 
+
+@media (min-width:960px) { body {font-size:1rem;} } 
+@media (min-width:1100px) { body {font-size:1rem;} } 
+@media screen and (max-width: 1100px) {
+        .searchbar .search{
+            margin-top:60px;
+            width:82%;
+        }
+        .searchbar i{
+            top:99px;
+            left:75%;
+        }
+        .head{
+            position: absolute;
+            top:30px;
+        }
+        .data{
+            width:300px;
+            height: 330px;
+        }
+        .modal .modal_content{
+            width:100%;
+        }
+
+
+}

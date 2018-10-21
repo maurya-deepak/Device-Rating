@@ -134,6 +134,10 @@ left:30%;
                  </div>
             </ul>
     </div>
+    <div class="setting_show">
+      
+    </div>
+   
 <!-- head part end -->  
 <?php 
  
@@ -141,7 +145,6 @@ left:30%;
         {
             // prints username who has logined
             echo "<h1 class='welcome'>Welcome ".$_SESSION['name']."</h1>";
-
         }
 
 ?>
@@ -151,19 +154,21 @@ left:30%;
             // prints on which device user commented
             echo "<p class='welcome commented'>Thank you for your rating and comment on ".$_SESSION['comment']."</p>";
             /* after reload session will not show */
-            unset($_SESSION['comment']);
+            // unset($_SESSION['comment']);
             // session_destroy();
         }
 
 ?>
 
 <!-- main comatainer conatains devices -->
+
     <div class="container-compare">
-        <div class="searchbar">
-                    <input type="text" class="search" placeholder="search your device here..." id="search">
+        <div class="searchbar" id="full_width_searchbar">
+                    <input type="text" class="search" placeholder="search your devices" id="search">
                     <!-- <input type ="submit" value="search" class="s_btn"> -->
                     <i class="fa fa-search" aria-hidden="true"></i>        
         </div>
+       
         <div class="all_data" id="all_data">
 
            <?php 
@@ -182,8 +187,8 @@ left:30%;
             }
            ?>
            <div class="searchbar">
-            <input type="button" id="add" value="Not find your device ? Add device">
-        </div>
+                <input type="button" id="add" value="Not find your device ? Add device">
+           </div>
         </div>
 </div>
 <!-- about section -->
@@ -197,15 +202,15 @@ left:30%;
 <!-- footer section -->
 <footer class="footer">
     <h4>Connect with us on</h4>
-    <a href="www.whatsapp.com" target="_blank" title="Whatsapp"><img src="..\images/what.jpg"></a>
-    <a href="www.facebook.com" title="Facebook"><img src="..\images/face.jpg"></a>
-    <a href="www.instagram.com" title="Instagram"><img src="..\images/insta.jpg"></a>
-    <a href="www.google.com" title="Google"><img src="..\images/google.jpg"></a>
-       
+    <div class="footer_cont_img">
+        <a href="www.whatsapp.com" target="_blank" title="Whatsapp"><img src="../images/what.jpg"></a>
+        <a href="www.facebook.com" title="Facebook"><img src="../images/face.jpg"></a>
+        <a href="www.instagram.com" title="Instagram"><img src="../images/insta.jpg"></a>
+        <a href="www.google.com" title="Google"><img src="../images/google.jpg"></a>
+    </div>
 </footer>
 
 <script type="text/javascript">
-   
        var name;
        var device_name;
        var modal = document.getElementById('modal');
@@ -303,15 +308,11 @@ left:30%;
                     item.style.display = "none";
                 }
             });       
-    }
+        }
 
 
-    //  var like_value = document.getElementById("like");
-    //   like_value.onclick = liked ;
-    // function liked() {
-    //     var id_number = this.id;
-    //     document.getElementById("1").style.color= "blue";
-    // }
-    </script>
+
+
+</script>
 </body>
 </html>

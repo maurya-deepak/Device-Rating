@@ -10,7 +10,7 @@ unset($_SESSION['name']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width">
+   
     <link rel="stylesheet" href="style.css">
     <script src="../jquery-3.3.1.min.js"></script>
     <script>
@@ -61,7 +61,6 @@ unset($_SESSION['name']);
 
 <body>
 <div class="none" id="none">
-
     <header class="header"> 
             <nav class="nav">
                 <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
@@ -75,6 +74,10 @@ unset($_SESSION['name']);
         </nav>
     </header>
 
+<div class="hide_sign_up">
+    <input type="button" id="sign_up_in" value="Sign-in">
+</div>
+
     <div class="container" id="container">
         
         <h1>Rate The Devices With Love</h1>
@@ -83,6 +86,7 @@ unset($_SESSION['name']);
     </div>
 
     <div class="form" id="forms">
+        <input type="button" id="close_form" name="close_form" value= "X">
         <form id="signin" class="sign_in">
             <h3>Sign-In</h3>
             <div class="inputArea">
@@ -155,16 +159,53 @@ unset($_SESSION['name']);
 </div>
 <footer class="footer">
     <h4>Connect with us on</h4>
-    <a href="www.whatsapp.com" target="_blank" title="Whatsapp"><img src="images/what.jpg"></a>
-    <a href="www.facebook.com" title="Facebook"><img src="images/face.jpg"></a>
-    <a href="www.instagram.com" title="Instagram"><img src="images/insta.jpg"></a>
-    <a href="www.google.com" title="Google"><img src="images/google.jpg"></a>
-    
+    <div class="footer_cont_img">
+        <a href="www.whatsapp.com" target="_blank" title="Whatsapp"><img src="images/what.jpg"></a>
+        <a href="www.facebook.com" title="Facebook"><img src="images/face.jpg"></a>
+        <a href="www.instagram.com" title="Instagram"><img src="images/insta.jpg"></a>
+        <a href="www.google.com" title="Google"><img src="images/google.jpg"></a>
+    </div>
 </footer>
 
 <!-- <script type="text/javascript" src="header.js"></script> -->
 
+
 <script>
+     if ($(window).width() < 1100)
+        {
+            $('.hide_sign_up').show();
+            $("#close_form").show();
+            $('.form').hide();
+        } else 
+        {
+            $('.hide_sign_up').hide();
+            $('.form').show();
+            $("#close_form").hide();
+        }
+   
+    $(window).resize(function()
+     {
+        if ($(this).width() < 1100)
+        {
+            $('.hide_sign_up').show();
+            $("#close_form").show();
+            $('.form').hide();
+        } else 
+        {
+            $('.hide_sign_up').hide();
+            $('.form').show();
+            $("#close_form").hide();
+        }
+    });
+
+$("#close_form").on("click",function(){
+    $('.form').hide();
+});
+
+$("#sign_up_in").on("click",function(){
+    $(".form").show();
+});
+
 window.onload = changeImage;
 function popup() {
     alert("Please Sign Up.");
@@ -181,6 +222,7 @@ images[3] = "images/googlepixel.jpg.png";
 images[4] = "images/sam.jpg";
 
 function changeImage() {
+   
     document.getElementById("none").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('"+images[i]+"')";
     document.getElementById("none").style.transition = ".5s ease-in infinite"
     if(i < images.length -1)
@@ -192,8 +234,6 @@ function changeImage() {
     }
     setTimeout(" changeImage()",time);
 }
-
-
 
 
 </script>

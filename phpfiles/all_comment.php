@@ -17,7 +17,7 @@ include 'connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="jquery-3.3.1.min.js"></script>
+    <script src="../../jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="all_comment.css">
@@ -25,7 +25,7 @@ include 'connect.php';
         .searchbar i{
             position:absolute;
             top:38px;
-            left:880px;
+            left:77.5%;
         }
         #comment_block{
             border-bottom:2px solid silver;
@@ -48,34 +48,37 @@ include 'connect.php';
             width:80%;
             float:right;
         }
+        #like{
+            margin-top:5px;
+            margin-left:15px;
+            font-size:28px;
+        }
+        #cancel{
+            width:30px;
+            height:30px;
+            border:none;
+            background:#3d0280;
+            color: #fff;
+            border-radius: 4px;
+        }
+
     </style>
 <title>Compare.com | All Comments</title>
 
 </head>
 <body>
-<!-- <div class="modal" id="modal">
-    <div class="modal_content" id="modal_content">
-        <input type="button" value="X" id="cut">
-        <h1>Leave a Reply</h1>
-        <form class="rate" method="POST" action="reply.php">
-            <label>Replying to:</label>
-            <input type="text" name="user_name" required="" id="username" value="" readOnly = true>
-            <textarea type="text" placeholder="Write Your Comment Here...." required="" name="comment" id="comment"></textarea>
-            <input type="submit" value="Reply" name="reply">
-        </form>
-    </div> 
-</div>  -->
-    <div class="head">
+    <div class="head" >
         <div class="searchbar">
-            <input type="text" class="search" placeholder="  Search your device here..." id="search">
+            <input type="text" class="search" placeholder="Search your device here..." id="search">
             <!-- <input type ="submit" value="search" class="s_btn"> -->
             <i class="fa fa-search" aria-hidden="true"></i> 
         </div>    
     </div>
 
     <!-- <input type="button" value="button" id="btn"> -->
-
+    <input type="button" id="show_device" value="Show devices">
     <div class="aside" id="aside">
+           <input type="button" id="cancel" value="X">
            <ul>
              <?php
                 if($count > 0)
@@ -91,8 +94,10 @@ include 'connect.php';
                 }
                 ?> 
             </ul>
-    </div>     
+    </div>  
+      
 <script>
+
 // document.getElementById('btn').onclick = myfunction;
  function myfunction(id)
  {
@@ -111,27 +116,69 @@ include 'connect.php';
     });
  }
 
- function reply(id)
- {
-    on_comment  = id ;
-    console.log(id);
-    reply  = document.getElementById('input_reply').value();
-    console.log(reply);
-    // $.ajax({
-    //     url: "show_comment.php",
-    //     type: "POST",
-    //     data: {on_comment: on_comment},
-    //     success: function(data){
-    //         Data = data;
-    //         alert(Data);
-    //         // $("#aside").after("<div id='comments_print'>"+Data+"</div>");
-    //     }
-    // });
- }
+ // search devices
+ var items = document.getElementById("aside").querySelectorAll("li");
+ 
+        var search = document.getElementById('search');
+        search.addEventListener('keyup',filter);
+        function filter(e){
+
+            var text = e.target.value.toLowerCase();
+           
+            items.forEach(function(item){
+                var itemname = item.innerHTML;
+                  
+                if(itemname.toLowerCase().indexOf(text)!= -1 )
+                {
+                    item.style.display = "block";
+                }
+                else{
+                    item.style.display = "none";
+                    if(document.getElementById("comments_print")!=null)
+                    {
+                        document.getElementById("comments_print").style.display ="none";
+                    }
+                    
+                }
+            });
+        } 
+        
+    $(".aside").show();
+    $("#show_device").hide();
+
+    $("#cancel").on("click",function(){
+        $(".aside").hide();
+        $("#show_device").show();
+    });
+
+    $("#show_device").on("click",function(){
+      $(".aside").show();
+      $("#show_device").hide();
+    });
+
+        if ($(window).width() < 1000)
+        {
+           $(".head").hide();
+           $("#cancel").show();
+           
+        } else 
+        {
+            $(".head").show();
+            $("#cancel").hide();
+        }
+   
+    $(window).resize(function()
+     {
+        if ($(this).width() < 1100)
+        {
+            $(".head").hide();
+            $("#cancel").show();
+        } else   
+        {
+            $(".head").show();
+            $("#cancel").hide();
+        }
+    });
 </script>
-
-<!-- <script src="modal.js"></script> -->
-
-
 </body>
 </html>
