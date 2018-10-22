@@ -21,11 +21,8 @@
 .head{
     margin:0;
     padding:0;
-    width:100%;
     min-height:50px;
     font-family: sans-serif; 
-    display:inline-block;
-
 }
 .log_out{
     padding:0;
@@ -85,11 +82,23 @@ position:absolute;
 top:0;
 left:30%;
 }
-.like i{
+.heart_rating i{
  margin-left:10px;
  font-size:25px;
  cursor:pointer;
- color:red;
+ color:silver;
+}
+#rate_count{
+border:none;
+display:inline;                                                                                                                                                 
+}
+.show_rate{
+    margin-top:30px;
+}
+.show_rate i{
+    font-size:28px;
+    color:red;
+    margin:3px 3px;
 }
 </style>
 <html lang="en">
@@ -110,11 +119,20 @@ left:30%;
     <div class="modal" id="modal">
             <div class="modal_content" id="modal_content">
                 <input type="button" value="X" id="cut">
-                <h1>Please Rate</h1>
+                <h1 id="h1">Please Rate</h1>
                 <form class="rate" method="POST" action="store_rating.php">
                     <input type="text" name="device_name" placeholder="Device Name" required="" id="device">
+                    <div class="heart_rating">
+                        <i id='thumbs0'  onclick='myFunction(this, 1)' class="fa fa-heart"></i>
+                        <i id='thumbs1'  onclick='myFunction(this, 2)' class="fa fa-heart"></i>
+                        <i id='thumbs2'  onclick='myFunction(this, 3)' class="fa fa-heart"></i>
+                        <i id='thumbs3'  onclick='myFunction(this, 4)' class="fa fa-heart"></i>
+                        <i id='thumbs4'  onclick='myFunction(this, 5)' class="fa fa-heart"></i>
+                        <br>
+                        <label style="margin:10px 20px">Rate:</label><input type="text" id="rate_count" name="rate_count" readOnly = true value="">
+                    </div>
                     <textarea type="text" placeholder="Write Your Comment Here...." required="" name="comment" id="comment"></textarea>
-                    <input type="submit" value="comment" name="rate">
+                    <input type="submit" value="comment" name="rate" id="rate">
                 </form>
                 </div> 
     </div> 
@@ -124,12 +142,12 @@ left:30%;
     <div class="head" id="head"> 
                 <div class="all_comment">
                     <form method="POST" action="all_comment.php">
-                        <input type="submit" value="Show comments" name="allcomment">
+                        <input type="submit" value="Show comments" name="allcomment" id="allcomment">
                     </form>
                 </div>
                 <div class="log_out">
                     <form method="POST" action="logout.php">
-                        <input type="submit" value="Log Out" name="logout">
+                        <input type="submit" value="Log Out" name="logout" id="logout">
                     </form>
                  </div>
             </ul>
@@ -146,7 +164,7 @@ left:30%;
             // prints username who has logined
             echo "<h1 class='welcome'>Welcome ".$_SESSION['name']."</h1>";
         }
-
+        
 ?>
 <?php
         if(isset($_SESSION['comment']))
@@ -174,12 +192,37 @@ left:30%;
            <?php 
             $sqql = "SELECT DISTINCT device_name FROM ratings";
             $result = mysqli_query($conn,$sqql);
+
             while($row = mysqli_fetch_assoc($result))
             {
+             
             ?>
             <div class="data" id="box">
                         <div class="btn" >
                             <label class="label"><?php echo $row['device_name'];?></label>
+                            <div class="show_rate">
+                                <?php
+                                    $query = "SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' ";
+                                    $sum = "SELECT SUM(rate_count) FROM ratings  WHERE device_name = '{$row['device_name']}' ";
+                                    $sum_rows = mysqli_query($conn,$sum);
+                                    $count_rows = mysqli_query($conn,$query);
+                                    $ro = mysqli_fetch_array($count_rows) ;
+                                    // echo $ro[0];
+                                    
+                                    $rso = mysqli_fetch_array($sum_rows);
+                                    
+                                    // echo $rso[0];
+                                    $total = $rso[0]/ $ro[0];
+                                    // echo gettype($ro);
+                                    for($i=0;$i<$total;$i++)
+                                    {
+                                    
+                                 ?>
+                                         <i class="fa fa-heart"></i>
+                                    <?php
+                                     }
+                                    ?>
+                            </div>
                             <input type="button" value="Rate & comment" class="done" id ="<?php echo $row['device_name'];?>">
                         </div> 
            </div>
@@ -209,7 +252,7 @@ left:30%;
         <a href="www.google.com" title="Google"><img src="../images/google.jpg"></a>
     </div>
 </footer>
-
+<script type="text/javascript" src="rate.js"></script>
 <script type="text/javascript">
        var name;
        var device_name;
@@ -267,10 +310,11 @@ left:30%;
        {    
             // e.preventDefault();
             device_name = this.id;
-            if(device_name!== "add" )
+            if(device_name!== "add")
             {
                 var device_name_on_modal = document.getElementById("device");
                 device_name_on_modal.value = device_name;
+                device_name_on_modal.readOnly = true;
             }
             var modal1 = document.getElementById('modal');
             modal1.style.visibility = "visible";
@@ -283,13 +327,14 @@ left:30%;
        
        function close_modal(e)
        {    e.preventDefault();
+        document.getElementById("device").readOnly = false;
             var data = document.getElementById('modal');
             data.style.visibility = "hidden";
             document.getElementById('modal_content').style.visibility = "hidden";
             data.style.animation = "popin 350ms ease-in-out 1 forwards";
             document.getElementById('modal_content').style.animation = "popin 350ms ease-in-out 1 forwards";
-            // document.getElementById('device').value="";
-            // document.getElementById('comment').value="";
+            document.getElementById('device').value="";
+            document.getElementById('comment').value="";
         }
         // search devices
         var items = document.getElementById("all_data").querySelectorAll("#box");
@@ -309,9 +354,6 @@ left:30%;
                 }
             });       
         }
-
-
-
 
 </script>
 </body>

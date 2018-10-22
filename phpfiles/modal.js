@@ -13,7 +13,9 @@ function open_modal()
        {    
             var name = this.id;
             console.log(name);
+
             var uername_name_on_modal = document.getElementById("username");
+        
             uername_name_on_modal.value = name;
             var modal1 = document.getElementById('modal');
             modal1.style.visibility = "visible";

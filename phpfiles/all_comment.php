@@ -61,6 +61,17 @@ include 'connect.php';
             color: #fff;
             border-radius: 4px;
         }
+        #comment_block i{
+            margin:10px 10px;
+            color:red;
+            font-size:24px;
+        }
+        #show_device
+        {
+            margin-top:10px;
+            height:30px;
+            font-size:28px;
+        }
 
     </style>
 <title>Compare.com | All Comments</title>
@@ -74,9 +85,7 @@ include 'connect.php';
             <i class="fa fa-search" aria-hidden="true"></i> 
         </div>    
     </div>
-
-    <!-- <input type="button" value="button" id="btn"> -->
-    <input type="button" id="show_device" value="Show devices">
+    <i class="fas fa-bars" id="show_device"></i>
     <div class="aside" id="aside">
            <input type="button" id="cancel" value="X">
            <ul>
@@ -87,7 +96,7 @@ include 'connect.php';
                     {
                 ?>
                     <li>
-                    <input type="button" value="<?php echo $row['device_name'] ?>" id="<?php echo $row['device_name'] ?>" name="<?php echo $row['device_name'] ?>" onclick= "myfunction(this.id)">
+                        <input type="button" value="<?php echo $row['device_name'] ?>" id="<?php echo $row['device_name'] ?>" name="<?php echo $row['device_name'] ?>" onclick= "myfunction(this.id)">
                     </li>
                 <?php
                     }   
@@ -103,6 +112,14 @@ include 'connect.php';
  {
     $("#comments_print").remove();
     device_name = id;
+    var dd = document.getElementById( device_name );
+    if(dd.style.color != "gray")
+    {
+        document.getElementById( device_name ).style.color = "gray"; 
+    }
+    else{
+        document.getElementById( device_name ).style.color = "#fff"; 
+    }
     // alert(device_name);
     $.ajax({
         url: "show_comment.php",

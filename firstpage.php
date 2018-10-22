@@ -160,8 +160,8 @@ unset($_SESSION['name']);
 <footer class="footer">
     <h4>Connect with us on</h4>
     <div class="footer_cont_img">
-        <a href="www.whatsapp.com" target="_blank" title="Whatsapp"><img src="images/what.jpg"></a>
-        <a href="www.facebook.com" title="Facebook"><img src="images/face.jpg"></a>
+        <a href="https://api.whatsapp.com/send" data-action="share/whatsapp/share" target="_blank" title="Whatsapp"><img src="images/what.jpg"></a>
+        <a href="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" title="Facebook"><img src="images/face.jpg"></a>
         <a href="www.instagram.com" title="Instagram"><img src="images/insta.jpg"></a>
         <a href="www.google.com" title="Google"><img src="images/google.jpg"></a>
     </div>
