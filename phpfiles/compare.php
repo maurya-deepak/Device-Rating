@@ -1,17 +1,47 @@
 <?php
        include 'connect.php';
+       unset($_SESSION['not_logged_in']);
+       unset($_SESSION['cpass']);
+    
 ?>
 <!DOCTYPE html>
 <style>
+.main_head{
+    padding-top:80px;
+}
+.header{
+    background-color:#fff;
+    box-shadow: 0px 4px 3px -3px rgba(0,0,0,0.45);
+    position:fixed;
+    top:0;
+}
+.header .navcompare ul li a{
+    color:black;
+}
+.header .navcompare ul li:hover a{
+    color:#000;
+}
+.header .navcompare h1{
+    text-shadow: 1px 1px #000;
+}
+.header .navcompare h1 a{
+    color:black;
+}
+
+#list .current a{
+   color:#000;
+}
+#list li{
+    border-radius:4px;
+}
+
 .welcome{
-    position:absolute;
-    top:0px;
-    left:0;
     margin:0;
     padding:0;  
     display:inline;
     color:#3d0280;
 }
+
 .commented{
     margin:0;
     padding:0;
@@ -24,63 +54,33 @@
     min-height:50px;
     font-family: sans-serif; 
 }
-.log_out{
-    padding:0;
-    margin-top:10px;
-    margin-right:10px;
-    float:right;
-    background: transparent;
-    transition:.5s ease-in-out;
-   
-}
-.log_out input{
-    width:100px;
-    height:40px;
-    padding:10px 10px;
-    background: transparent;
-    font-size:16px;
-    color:black;
+#allcomment{
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
     border:none;
-    cursor:pointer;
-    border:2px solid #3d0280;
-    border-radius:6px;
-   
+    
 }
-.log_out:hover{
-    border-radius:6px;
-    background-color:#3d0280;
-}
-.log_out input:hover{
-    color:#fff;
-}
-.all_comment{
-    margin-top:10px;
-    margin-right:10px;
-    float:right;
-    transition:.5s ease-in-out;
-}
-.all_comment input{
-    width:140px;
-    height:40px;
-    padding:10px 10px;
-    background:transparent;
-    font-size:16px;
+#logout{
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
     border:none;
-    border:2px solid #3d0280;
-    border-radius:6px;
-}
-.all_comment:hover{
-    border-radius:6px;
-    background-color:#3d0280;
-}
-.all_comment input:hover{
-    color:#fff;
 }
 .commented
 {
 position:absolute;
 top:0;
 left:30%;
+}
+
+#fav-heart{
+    font-size:22px;
+    position:absolute;
+    top:5px;
+    left:5px;
+    color:red;
+    cursor:pointer;
+    opacity: 0.0;
+    transition: all 500ms ease-in-out;
 }
 .heart_rating i{
  margin-left:10px;
@@ -97,8 +97,130 @@ display:inline;
 }
 .show_rate i{
     font-size:28px;
-    color:red;
+    color:rgb(4, 11, 107);
     margin:3px 3px;
+}
+.setting_show{
+    padding-top:100px;
+}
+.setting_show i{
+    position:fixed;
+    top:15px;
+    right:10px;
+    color:black;
+    font-size:24px;
+    cursor:pointer;
+    transition: transform 300ms linear;
+    z-index:3;
+}
+.settings{
+    width:200px;
+    position:fixed;
+    top:40px;
+    right:20px;
+    z-index:33;
+    border-radius:4px;
+    background-color:#fff;
+    /* box-shadow: 1px 11px 17px -4px rgba(111,128,113,1); */
+    box-shadow: 0px -4px 18px -5px rgba(0,0,0,0.75);
+}
+.rotation{
+  transform: rotate(90deg);
+}
+.settings input{
+    margin:1px 0px;
+    width:100%;
+    height:40px;
+    font-size:20px;
+    background-color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.settings input:hover{
+    background-color:rgba(167, 158, 158,0.3);
+    color:#3d0280; 
+
+}
+.notLoggedIn{
+    margin-top:5px;
+    text-align:center;
+}
+.notLoggedIn label{
+    font-size:20px;
+    display:block;
+}
+.notLoggedIn input{
+    width:100px;
+    height:30px;
+    border:1px solid silver;
+    font-size:18px;
+    background-color:red;
+    color:#ffffff;
+    cursor:pointer;
+    border-radius:4px;
+}
+.DeviceFeature{
+    margin-top:20px;
+    margin-left:10%;
+    margin-right:10%;
+    padding:20px 10px;
+    border:1px solid silver;
+}
+.DeviceFeature i{
+font-size:12px;
+}
+
+.DeviceFeature textarea{
+    width:531px;
+    height:67px;
+    border:1px solid silver;
+    border-radius:4px;
+    resize: none;
+    padding-left:5px;
+    font-size: 18px;
+}
+.avgReview a ,.No-of-reviews a{
+    text-decoration:none;
+}
+.avgReview a:hover , .No-of-reviews a:hover{
+    color:orange;
+    text-decoration:underline;
+}
+.next_previous{
+    position:relative;
+    margin:20px 10px;
+    padding:10px 10px;
+    text-align:center;
+}
+.next_previous i{
+    color:black;
+}
+i.fa-chevron-left{
+    position:absolute;
+    top:33px;
+    left:465px;
+}
+i.fa-chevron-right{
+    position:absolute;
+    top:33px;
+    right:480px;
+}
+
+.next_previous input{
+    width:200px;
+    margin:10px 30px;
+    padding:10px 10px;
+    font-size:18px;
+    cursor:pointer;
+    border:1px solid silver;
+    border-radius:4px;
+}
+.next_previous input:hover{
+    border:1px solid black;
+    background:whitesmoke;
+}
+#Rate_comm{
+    margin-right:20px;
 }
 </style>
 <html lang="en">
@@ -107,62 +229,140 @@ display:inline;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- <link href="..\fontawesome-free-5.3.1-web/fontawesome-free-5.3.1-web/css/font-awesome.min.css" > -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="../../jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="..\style.css">
-    <!-- <link href="..\fontawesome-free-5.3.1-web/fontawesome-free-5.3.1-web/css/font-awesome.css" rel="stylesheet"> -->
-    <title>CompareAnything | Welcome </title>
+    <title>DeviceRating | Rate & Comment </title>
 </head>
-<body>    
-<!-- rating and comment section popup starts here -->
-    <div class="modal" id="modal">
+<body>
+<header class="header"> 
+    <nav class="nav navcompare">
+        <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
+        <h1><a href="firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        <ul id="list">
+        <div class="searchbar" id="full_width_searchbar">
+            <input type="text" class="search" placeholder="search your devices" id="search">
+            <i class = 'fa fa-search'></i>       
+        </div>
+            <li><a href="../firstpage.php">Home</a></li>
+            <!-- <li><a href="sign_up_page.php">Join us</a></li> -->
+            <li class="current" id='Rate_comm'><a href="compare.php">Rates & comments</a></li>
+            <!-- <li id="li_about"><a href="#about">About Us</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+<!-- rating and comment section popup starts here --> 
+     <div class="modal" id="modal">
             <div class="modal_content" id="modal_content">
-                <input type="button" value="X" id="cut">
-                <h1 id="h1">Please Rate</h1>
-                <form class="rate" method="POST" action="store_rating.php">
-                    <input type="text" name="device_name" placeholder="Device Name" required="" id="device">
-                    <div class="heart_rating">
-                        <i id='thumbs0'  onclick='myFunction(this, 1)' class="fa fa-heart"></i>
-                        <i id='thumbs1'  onclick='myFunction(this, 2)' class="fa fa-heart"></i>
-                        <i id='thumbs2'  onclick='myFunction(this, 3)' class="fa fa-heart"></i>
-                        <i id='thumbs3'  onclick='myFunction(this, 4)' class="fa fa-heart"></i>
-                        <i id='thumbs4'  onclick='myFunction(this, 5)' class="fa fa-heart"></i>
-                        <br>
-                        <label style="margin:10px 20px">Rate:</label><input type="text" id="rate_count" name="rate_count" readOnly = true value="">
+           
+                    <input type="button" value="X" id="cut">
+                    <h1 id="h1">Please Rate</h1>
+                    <?php 
+                        if(!isset($_SESSION['name']))
+                        {
+                    ?>
+                    <div class="notLoggedIn">
+                        <label>Before you go ahead please logIn / SignUp<label>
+                        <a href="../firstpage.php"><input type="button" id="login" value="LogIn"></a>
+                        <a href="../sign_up_page.php"><input type="button" id="signup" value="SignUp"></a>
                     </div>
-                    <textarea type="text" placeholder="Write Your Comment Here...." required="" name="comment" id="comment"></textarea>
-                    <input type="submit" value="comment" name="rate" id="rate">
-                </form>
-                </div> 
-    </div> 
+                    <?php
+                        }
+                    ?>
+                    <form class="rate" method="POST" action="store_rating.php"  enctype="multipart/form-data" >
+                        <input type="text" name="device_name" placeholder="Device Name" required="" id="device">
+                        <input type="file" name="image" id="imgFile">
+                        <div id="imagepreview" class="imagepreview"></div>
+                        <div class="heart_rating" id="heart_rating">
+                            <label style="margin-top:10px;margin-left:100px">Rate:</label>
+
+                            <i id='thumbs0'  onclick='myFunction(this, 1)' class="fa fa-star"></i>
+                            <i id='thumbs1'  onclick='myFunction(this, 2)' class="fa fa-star"></i>
+                            <i id='thumbs2'  onclick='myFunction(this, 3)' class="fa fa-star"></i>
+                            <i id='thumbs3'  onclick='myFunction(this, 4)' class="fa fa-star"></i>
+                            <i id='thumbs4'  onclick='myFunction(this, 5)' class="fa fa-star"></i>
+                            
+                            <input type="text" id="rate_count" name="rate_count" readOnly = true value="">
+                        </div>
+                        <!-- <div class="DeviceFeature">
+                            <ol>
+                                <i class="fas fa-arrows-alt"></i><label> How the Design and Build Quality is ?</label><textarea type="text" placeholder="Type here..." required></textarea>
+                              <br>
+                                <i class="fas fa-arrows-alt"></i><label> How much Storage provided ?</label><textarea type="text" placeholder="Type here..." required></textarea>
+                                <br>
+                                <i class="fas fa-arrows-alt"></i><label> Camera Specifications:</label><textarea type="text" placeholder="Type here..." required></textarea>
+                                <br>
+                                <i class="fas fa-arrows-alt"></i><label> What about Price ?</label><input type="text" placeholder="Type here..." required>
+                            <ol>
+                        </div> -->
+                        <textarea type="text" placeholder="Comment here..." required="" name="comment" id="comment"></textarea>
+                        <input type="submit" value="Submit" name="rate" id="rate">
+                    </form>
+               
+                   
+            </div>
+           
+    </div>  
+   
 <!-- rating and comment section popup end here -->
 
 <!-- head part stats -->
-    <div class="head" id="head"> 
-                <div class="all_comment">
-                    <form method="POST" action="all_comment.php">
-                        <input type="submit" value="Show comments" name="allcomment" id="allcomment">
-                    </form>
-                </div>
-                <div class="log_out">
-                    <form method="POST" action="logout.php">
-                        <input type="submit" value="Log Out" name="logout" id="logout">
-                    </form>
-                 </div>
-            </ul>
-    </div>
+<div class="main_head">
     <div class="setting_show">
-      
+      <i id="setting" class="fa fa-cog"></i>
     </div>
-   
+    <div class="settings">
+        <div class="all_comment">
+            <form method="POST" action="all_comment.php">
+                <input type="submit" value="Show all comments" name="allcomment" id="allcomment">
+            </form>
+        </div>
+        
+        <div>
+            <?php
+                    if(isset($_SESSION['name']))
+                    {
+                    ?>
+                        <div>
+                            <a href="changePassword.php"><input type="button" id="changePassword" value="Change Password"></a>
+                        </div>
+
+                        <div>
+                            <input type="button" id="favdevice" value="favorite Devices">
+                        </div>
+                <?php 
+                    } 
+                ?>
+                        <div>
+                            <a href="#about"><input type="button" value="About Us"></a>
+                        </div>
+                        <div>
+                            <a href="#contact"><input type="button" value="Contact Us"></a>
+                        </div>
+                <?php 
+                    if(isset($_SESSION['name']))
+                    {
+                ?>
+                        <div class="log_out">
+                            <form method="POST" action="logout.php">
+                                <input type="submit" value="Log Out" name="logout" id="logout">
+                            </form>
+                        </div>
+                <?php
+                    }
+                ?>
+        </div>
+        
+    </div>
+</div>   
 <!-- head part end -->  
 <?php 
  
         if(isset($_SESSION['name']))
         {
             // prints username who has logined
-            echo "<h1 class='welcome'>Welcome ".$_SESSION['name']."</h1>";
+            echo "<h4 class='welcome' title='logged in as ".$_SESSION['name']."'>Welcome ".$_SESSION['name']."</h4>";
         }
         
 ?>
@@ -170,9 +370,8 @@ display:inline;
         if(isset($_SESSION['comment']))
         {
             // prints on which device user commented
-            echo "<p class='welcome commented'>Thank you for your rating and comment on ".$_SESSION['comment']."</p>";
-            /* after reload session will not show */
-            // unset($_SESSION['comment']);
+            echo "<script>alert('Thank you for your rating and comment on ".$_SESSION['comment']."')</script>";
+            unset($_SESSION['comment']);
             // session_destroy();
         }
 
@@ -181,27 +380,52 @@ display:inline;
 <!-- main comatainer conatains devices -->
 
     <div class="container-compare">
-        <div class="searchbar" id="full_width_searchbar">
-                    <input type="text" class="search" placeholder="search your devices" id="search">
-                    <!-- <input type ="submit" value="search" class="s_btn"> -->
-                    <i class="fa fa-search" aria-hidden="true"></i>        
-        </div>
-       
-        <div class="all_data" id="all_data">
+           <div class="all_data" id="all_data">
 
-           <?php 
-            $sqql = "SELECT DISTINCT device_name FROM ratings";
+           <?php
+            $a = 0;
+            $sqql = "SELECT device_name , images FROM ratings GROUP BY device_name";
             $result = mysqli_query($conn,$sqql);
 
             while($row = mysqli_fetch_assoc($result))
             {
-             
+                $image ="../images/".$row['images'];
             ?>
-            <div class="data" id="box">
+            <div class="data" id="box" style="background-image:url('<?php echo $image ;?>'),url('../images/not-available.png');">
+                        <?php 
+                            if(isset($_SESSION['name'])){ 
+                        ?>   
+                            <i class="fa fa-heart" id="fav-heart" title="Add to favourites"></i>
+                        <?php
+                            }
+                        ?> 
                         <div class="btn" >
                             <label class="label"><?php echo $row['device_name'];?></label>
+                        </div>
+                        
                             <div class="show_rate">
                                 <?php
+                                                                         
+                                    $star5query = mysqli_query($conn,"SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' AND rate_count = 5 ");
+                                    $star5arr =  mysqli_fetch_array($star5query);
+                                    $GLOBALS['star_five'] = $star5arr[0];
+
+                                    $star4query = mysqli_query($conn,"SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' AND rate_count = 4 ");
+                                    $star4arr =  mysqli_fetch_array($star4query);
+                                    $GLOBALS['star_four'] = $star4arr[0];
+
+                                    $star3query = mysqli_query($conn,"SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' AND rate_count = 3 ");
+                                    $star3arr =  mysqli_fetch_array($star3query);
+                                    $GLOBALS['star_three'] = $star3arr[0];
+
+                                    $star2query = mysqli_query($conn,"SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' AND rate_count = 2 ");
+                                    $star2arr =  mysqli_fetch_array($star2query);
+                                    $GLOBALS['star_two'] = $star2arr[0];
+
+                                    $star1query = mysqli_query($conn,"SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' AND rate_count = 1 ");
+                                    $star1arr =  mysqli_fetch_array($star1query);
+                                    $GLOBALS['star_one'] = $star1arr[0];
+                         
                                     $query = "SELECT COUNT(rate_count) FROM ratings WHERE device_name = '{$row['device_name']}' ";
                                     $sum = "SELECT SUM(rate_count) FROM ratings  WHERE device_name = '{$row['device_name']}' ";
                                     $sum_rows = mysqli_query($conn,$sum);
@@ -218,17 +442,103 @@ display:inline;
                                     {
                                     
                                  ?>
-                                         <i class="fa fa-heart"></i>
+                                         <i class="fa fa-star"></i>
                                     <?php
                                      }
                                     ?>
                             </div>
-                            <input type="button" value="Rate & comment" class="done" id ="<?php echo $row['device_name'];?>">
-                        </div> 
+                        
+                        <div class="more_about_device" id="more_about_device">
+                            <label> How the Design and Build Quality is ?</label><br>
+                            <label> How much Storage provided ?</label><br>
+                            <label> Camera Specifications:</label><br>
+                            <label> What is the Price ?</label><br>
+                            <div class="row">
+                                <div class="No-of-reviews" style="margin-top:5px;">
+                                    <a href="all_comment.php" title="see comments"><?php echo $ro[0]?> person's review</a>
+                                </div>
+                                <div class="side">
+                                    <div>5 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <?php  $per5 =  ($GLOBALS['star_five'] * 100) / $rso[0] .'%'; ?>
+                                        <div class="bar-5" style='width:<?php echo $per5; ?> '></div>
+                                    </div>
+                                </div>
+                                <div class="side right"><!-- count of 5 stars how many have given-->
+                                    <div>
+                                        <?php echo $GLOBALS['star_five'];?>
+                                    </div>
+                                </div>
+                                <div class="side">
+                                    <div>4 star</div> 
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <?php  $per4 =  ($GLOBALS['star_four'] * 100) / $rso[0] .'%'; ?>
+                                        <div class="bar-4" style='width:<?php echo $per4; ?> '></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div> <?php echo $GLOBALS['star_four'];?></div>
+                                </div>
+                                <div class="side">
+                                    <div>3 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <?php $per3 =  ($GLOBALS['star_three'] * 100) / $rso[0] .'%' ; ?>
+                                        <div class="bar-3" style='width:<?php echo $per3; ?> '></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div> <?php echo $GLOBALS['star_three']; ?></div>
+                                </div>
+                                <div class="side">
+                                    <div>2 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <?php $per2 =  ($GLOBALS['star_two'] * 100) / $rso[0] .'%' ;?>
+                                        <div class="bar-2" style='width:<?php echo $per2; ?> '></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div> <?php echo $GLOBALS['star_two'] ; ?></div>
+                                </div>
+                                <div class="side">
+                                    <div>1 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <?php $per1 =  ($GLOBALS['star_one'] * 100) / $rso[0] .'%';?>
+                                        <div class="bar-1" style='width:<?php echo $per1; ?> '></div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div> <?php echo $GLOBALS['star_one'];?></div>
+                                </div>
+                            </div>
+                            <div class = "avgReview" style="margin-top:5px;">
+                                <a href="#"><?php echo round($total,1); ?> out of 5 stars.</a>
+                            </div>
+                        </div>
+
+                        <div class="comment_btn">
+                            <input type="button" value="Write review" class="done" title="Rate this device" id ="<?php echo $row['device_name'];?>">
+                        </div>
            </div>
+          
            <?php
             }
+        
            ?>
+           <div class="next_previous"> 
+           <i class="fas fa-chevron-left"></i>    
+           <input type="button" id="previous" name="previous" value="Previous" title="Previous" onclick="goPrevious();">
+           <input type="button" id="next" name="next" value="Next" title="Next"><i class="fas fa-chevron-right"></i>
+           </div>
            <div class="searchbar">
                 <input type="button" id="add" value="Not find your device ? Add device">
            </div>
@@ -243,13 +553,15 @@ display:inline;
             </p>
 </div>
 <!-- footer section -->
-<footer class="footer">
+<footer class="footer" id="contact">
     <h4>Connect with us on</h4>
-    <div class="footer_cont_img">
-        <a href="www.whatsapp.com" target="_blank" title="Whatsapp"><img src="../images/what.jpg"></a>
-        <a href="www.facebook.com" title="Facebook"><img src="../images/face.jpg"></a>
-        <a href="www.instagram.com" title="Instagram"><img src="../images/insta.jpg"></a>
-        <a href="www.google.com" title="Google"><img src="../images/google.jpg"></a>
+    <div class="contact">
+        <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://plus.google.com/discover"><i class="fab fa-google-plus"></i></a></li>
+        </ul>
     </div>
 </footer>
 <script type="text/javascript" src="rate.js"></script>
@@ -259,11 +571,13 @@ display:inline;
        var modal = document.getElementById('modal');
        modal.style.visibility = 'hidden';
        document.getElementById('modal_content').style.visibility = "hidden";
-// for creating new elements
+       
+///////////////////////// for creating new Devices(Data)///////////////////////////////////////
+
         document.getElementById("add").onclick  =  create_items;
         function create_items(e)
         {
-            // e.preventDefault();
+            e.preventDefault();
            name =  prompt("Enter Name of device");
            if(name == 'null' || name == ""){
             alert("Name is INVALID.Please provide valid name.");
@@ -297,6 +611,16 @@ display:inline;
         }
     }
 
+    // disable scrolling
+/////////////////////////////////////////////////////////////////////////////
+        var fixed = document.getElementById('modal');
+
+        fixed.addEventListener('touchmove', function(e)
+        {
+           e.preventDefault();
+        }, false);
+/////////////////////////////////////////////////////////////////////////
+//////////// rate and comment modal //////////////////////////////////
        var data = document.getElementById("all_data").querySelectorAll('[type=button]');
        var no_of_child = document.querySelectorAll('.data').length;
 
@@ -304,17 +628,21 @@ display:inline;
        {
            data[i].onclick = open_modal;    
        }
-       document.getElementById('add').onclick = open_modal;
 
+       document.getElementById('add').onclick = open_modal;
+ 
        function open_modal(e)
        {    
-            // e.preventDefault();
+            e.preventDefault();
             device_name = this.id;
-            if(device_name!== "add")
+            if(device_name !== "add")
             {
                 var device_name_on_modal = document.getElementById("device");
                 device_name_on_modal.value = device_name;
                 device_name_on_modal.readOnly = true;
+                device_name_on_modal.style.border="none";
+                device_name_on_modal.style.fontSize="24px";
+                $("#imgFile").hide();
             }
             var modal1 = document.getElementById('modal');
             modal1.style.visibility = "visible";
@@ -324,10 +652,15 @@ display:inline;
        }
 
        document.getElementById('cut').onclick = close_modal ;
-       
+       // clearing the color of the rate hearts/star
+       var arra = document.getElementById("heart_rating").querySelectorAll('i');
+
+
        function close_modal(e)
        {    e.preventDefault();
-        document.getElementById("device").readOnly = false;
+            document.getElementById("device").readOnly = false;
+            document.getElementById("device").style.border="1px solid silver";
+            document.getElementById("device").style.fontSize="16px";
             var data = document.getElementById('modal');
             data.style.visibility = "hidden";
             document.getElementById('modal_content').style.visibility = "hidden";
@@ -335,8 +668,19 @@ display:inline;
             document.getElementById('modal_content').style.animation = "popin 350ms ease-in-out 1 forwards";
             document.getElementById('device').value="";
             document.getElementById('comment').value="";
+            $("#rate_count").val(null);
+            $("#imgFile").show();
+            $("#preimg").remove();
+            $("#imgFile").val(null);
+            for(var i=0;i<arr.length;i++)
+            {
+                arra[i].style.color = "silver";
+            }
+            
         }
-        // search devices
+////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////search devices//////////////////////
+
         var items = document.getElementById("all_data").querySelectorAll("#box");
         var search = document.getElementById('search');
         search.addEventListener('keyup',filter);
@@ -354,6 +698,45 @@ display:inline;
                 }
             });       
         }
+///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////setting right corner icon ////////////////////////////
+
+    $(document).ready(function(){
+        $(".settings").hide();
+        $(".setting_show").click(function(){
+            $(".settings").toggle();
+            
+            $("#setting").toggleClass( "rotation");
+         
+            return false;
+        });
+    });
+
+    $(document).click(function() {
+        $(".settings").hide();
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////Image Preview before uploading//////////////////////////////////
+
+    $("#imgFile").change(function(){
+        console.log(1);
+        filePreview(this);
+    });
+
+    function filePreview(input)
+    {
+        if(input.files && input.files[0])
+        {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+            $('#preimg').remove();
+            $('.imagepreview').append('<img src="'+e.target.result+'" width="250" height="200" id="preimg"/>');
+        }
+        reader.readAsDataURL(input.files[0]); 
+        }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 </script>
 </body>

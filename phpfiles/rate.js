@@ -3,7 +3,7 @@
     arr = [];
     total_rate = 0;
     function myFunction(x, temp){
-        console.log(temp) 
+        // console.log(temp) 
     if(arr.includes(temp)){
         i = 0;
         arr.splice(arr.indexOf(temp),1);
@@ -20,7 +20,7 @@
     x.style.fontSize = "28px"; 
     // console.log(rate);                                             
     }
-    else{
+    else if(x.style.color != "silver"){
         x.style.color = "silver";
         x.style.fontSize = "25px";
         total_rate = total_rate - 1;
