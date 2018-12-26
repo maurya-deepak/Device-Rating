@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome-free-5.3.1-web/fontawesome-free-5.3.1-web/css/">
     <script src="../jquery-3.3.1.min.js"></script>
+ 
     <script>
         $(document).ready(function(){
         $("#sign-in").click(function()
@@ -95,10 +96,15 @@
     <!-- <div class="hide_sign_up">
         <input type="button" id="sign_up_in" value="Sign-in">
     </div> -->
+    
+  <h1 class="text-js">Look mum, I'm typing!</h1>
+  
 
     <div class="container" id="container">
         <div class="about_content">
-            <h1>Rate The Devices With Love</h1>
+            <div class="type-js headline">
+                <h1 class="text-js">Rate The Devices With Love.</h1>
+            </div>
             <p>Here you can compare the latest devices & there features and <br> give your rating as feedback which will be useful for your other friend user.</p>
             <h2>Enjoy Comparing And Rating.</h2>
         </div>
@@ -123,7 +129,7 @@
             <div class="submit_btn">
                 <input type="button" class="button_input"  value="Sign in" name="submit-signin" id="sign-in">
             </div>
-            <a href="sign_up_page.php"><input type="submit" class="tosignup" name="signup" value="Not a member ? Sign-Up"></a>
+            <a href="sign_up_page.php"><input type="button" class="tosignup" name="signup" value="Not a member ? Sign Up"></a>
             <a href="" class="tosignin">Forgot password?</a>
         </form>
     </div>
@@ -236,6 +242,8 @@
 
 
 <script>
+
+
     $('.form').hide();
     // $("#close_form").show();
     $(document).ready(function(){
@@ -341,6 +349,41 @@ $(function() {
            $(".header").children().removeClass("active");
         }
     });
+});
+
+
+function autoType(elementClass, typingSpeed){
+  var thhis = $(elementClass);
+  thhis.css({
+    "position": "relative",
+    "display": "inline-block"
+  });
+  thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+  thhis = thhis.find(".text-js");
+  var text = thhis.text().trim().split('');
+  var amntOfChars = text.length;
+  var newString = "";
+  thhis.text("|");
+  setTimeout(function(){
+    thhis.css("opacity",1);
+    thhis.prev().removeAttr("style");
+    thhis.text("");
+    for(var i = 0; i < amntOfChars; i++){
+      (function(i,char){
+        setTimeout(function() {        
+          newString += char;
+          thhis.text(newString);
+        },i*typingSpeed);
+      })(i+1,text[i]);
+    }
+  },1500);
+}
+
+$(document).ready(function(){
+  // Now to start autoTyping just call the autoType function with the 
+  // class of outer div
+  // The second paramter is the speed between each letter is typed.   
+  autoType(".type-js",200);
 });
 </script>
 </body>

@@ -9,7 +9,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="style.css">
-   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
     <title>DeviceRating | Sign-Up</title>
 
 </head>
@@ -17,12 +18,12 @@ session_start();
     <?php
     if(isset($_SESSION['not_logged_in']))
     {
-     echo "<h3 style='color:red;text-align:center'>Please SignUp to Rate & Comment.</h3>";
+     echo "<h3 style='color:red;text-align:center;margin-top:20px;'>Please SignUp to Rate & Comment.</h3>";
     }
     ?>
     <div class="sign_up_page">
      <form id="signup" class="sign-up"> 
-        <h3 class="h3">Sign-Up To Enjoy The Services</h3>
+        <h3 class="h3">Sign up to enjoy the services</h3>
 
         <div class="inputArea">
                 <input type="text" name="user_email" placeholder="Email" id="email">
@@ -41,12 +42,11 @@ session_start();
         </div>
 
         <div class="submit_btn">
-                <input type="button" id="submit" class="button_input" value="sign-up" name="submit-signup">
-        </div>
+                <input type="button" id="submit" class="button_input" value="Sign up" name="submit-signup">
+        </div> 
 
         <div class="back_btn">
-      
-            <a href="firstpage.php"><input type="button" name="back" value="back" ></a>
+            <a href="firstpage.php"><button type="button"><i class="fas fa-chevron-left"></i> Back</button></a>
         </div>
     </form> 
 </div>   

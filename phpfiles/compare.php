@@ -2,7 +2,22 @@
        include 'connect.php';
        unset($_SESSION['not_logged_in']);
        unset($_SESSION['cpass']);
-    
+       if(isset($_GET['name']))
+       {
+            $username = $_SESSION['name'];
+            $deviceName = $_GET['name'];
+        
+            $insertQuery = "INSERT INTO fav_devices(device_name,username) VALUES('$deviceName','$username') ";
+        
+            $result = mysqli_query($conn,$insertQuery);
+            if($result === true)
+            {
+                header("Location: compare.php");
+            }
+            else{
+                echo "Something went wrong";
+            }
+        }
 ?>
 <!DOCTYPE html>
 <style>
@@ -82,6 +97,11 @@ left:30%;
     opacity: 0.0;
     transition: all 500ms ease-in-out;
 }
+
+.fav_device button{
+    width:10px;
+    height:10px;
+}
 .heart_rating i{
  margin-left:10px;
  font-size:25px;
@@ -159,6 +179,10 @@ display:inline;
     cursor:pointer;
     border-radius:4px;
 }
+.notLoggedIn input:hover{
+    background-color:#fff;
+    color:red;
+}
 .DeviceFeature{
     margin-top:20px;
     margin-left:10%;
@@ -192,21 +216,8 @@ font-size:12px;
     padding:10px 10px;
     text-align:center;
 }
-.next_previous i{
-    color:black;
-}
-i.fa-chevron-left{
-    position:absolute;
-    top:33px;
-    left:465px;
-}
-i.fa-chevron-right{
-    position:absolute;
-    top:33px;
-    right:480px;
-}
 
-.next_previous input{
+.next_previous button{
     width:200px;
     margin:10px 30px;
     padding:10px 10px;
@@ -214,14 +225,24 @@ i.fa-chevron-right{
     cursor:pointer;
     border:1px solid silver;
     border-radius:4px;
+
 }
-.next_previous input:hover{
+.next_previous button:hover{
     border:1px solid black;
     background:whitesmoke;
+}
+.next_previous i{
+    font-size:16px;
 }
 #Rate_comm{
     margin-right:20px;
 }
+
+/* a.disabled {
+   pointer-events: none;
+   cursor: default;
+} */
+
 </style>
 <html lang="en">
 <head>
@@ -263,9 +284,9 @@ i.fa-chevron-right{
                         {
                     ?>
                     <div class="notLoggedIn">
-                        <label>Before you go ahead please logIn / SignUp<label>
-                        <a href="../firstpage.php"><input type="button" id="login" value="LogIn"></a>
-                        <a href="../sign_up_page.php"><input type="button" id="signup" value="SignUp"></a>
+                        <label>Before you go ahead please log in / Sign up<label>
+                        <a href="../firstpage.php"><input type="button" id="login" value="Log in"></a>
+                        <a href="../sign_up_page.php"><input type="button" id="signup" value="Sign up"></a>
                     </div>
                     <?php
                         }
@@ -329,7 +350,7 @@ i.fa-chevron-right{
                         </div>
 
                         <div>
-                            <input type="button" id="favdevice" value="favorite Devices">
+                            <a href="fav_device.php"><input type="button" id="favdevice" value="favorite Devices"></a>
                         </div>
                 <?php 
                     } 
@@ -381,10 +402,24 @@ i.fa-chevron-right{
 
     <div class="container-compare">
            <div class="all_data" id="all_data">
-
+            
            <?php
             $a = 0;
-            $sqql = "SELECT device_name , images FROM ratings GROUP BY device_name";
+            $limit = 8; 
+            if (isset($_GET["page"]) && $_GET["page"] > 1) 
+            {
+                $page  = $_GET["page"]; 
+            } 
+            else 
+            {
+                $page=1; 
+            } 
+
+            $record_index= ($page-1) * $limit;  
+         
+            // $record_index =0;
+            $sqql = "SELECT device_name , images FROM ratings  GROUP BY device_name  ORDER BY id DESC LIMIT $record_index,$limit";
+           
             $result = mysqli_query($conn,$sqql);
 
             while($row = mysqli_fetch_assoc($result))
@@ -394,9 +429,12 @@ i.fa-chevron-right{
             <div class="data" id="box" style="background-image:url('<?php echo $image ;?>'),url('../images/not-available.png');">
                         <?php 
                             if(isset($_SESSION['name'])){ 
-                        ?>   
-                            <i class="fa fa-heart" id="fav-heart" title="Add to favourites"></i>
-                        <?php
+                                $name = "".$row['device_name']."";
+                                // $name ="hi";
+                                echo '<form action="fav_device.php" method="GET">';
+                                echo '<a href="compare.php?name='.$name.'"><i class="fa fa-heart" id="fav-heart" title="Add to favourites"></i></a>';
+                                echo '</form>';
+                       
                             }
                         ?> 
                         <div class="btn" >
@@ -535,9 +573,25 @@ i.fa-chevron-right{
         
            ?>
            <div class="next_previous"> 
-           <i class="fas fa-chevron-left"></i>    
-           <input type="button" id="previous" name="previous" value="Previous" title="Previous" onclick="goPrevious();">
-           <input type="button" id="next" name="next" value="Next" title="Next"><i class="fas fa-chevron-right"></i>
+           <?php  
+                $s = "SELECT COUNT(distinct device_name) FROM ratings"; 
+                $retval1 = mysqli_query($conn, $s);  
+                $row = mysqli_fetch_row($retval1);  
+                $total_records = $row[0];  
+                
+                $total_pages = ceil($total_records / $limit);  
+               
+        
+                if($page > 1){
+                    echo '<a href="compare.php?page='.($page - 1).'"><button name="previous" title="Previous"><i class="fas fa-chevron-left"></i> Previous</button></a>';
+                }
+                if($page < $total_pages){
+                    echo '<a href="compare.php?page='.($page + 1).'"><button name="next" title="Next">Next <i class="fas fa-chevron-right"></i></button></a>';
+
+                }
+            
+            ?>
+           
            </div>
            <div class="searchbar">
                 <input type="button" id="add" value="Not find your device ? Add device">
@@ -640,10 +694,12 @@ i.fa-chevron-right{
                 var device_name_on_modal = document.getElementById("device");
                 device_name_on_modal.value = device_name;
                 device_name_on_modal.readOnly = true;
+                
                 device_name_on_modal.style.border="none";
                 device_name_on_modal.style.fontSize="24px";
                 $("#imgFile").hide();
             }
+            
             var modal1 = document.getElementById('modal');
             modal1.style.visibility = "visible";
             document.getElementById('modal_content').style.visibility = "visible";
@@ -678,9 +734,8 @@ i.fa-chevron-right{
             }
             
         }
-////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////search devices//////////////////////
-
+/////////////////////////////////search devices///////////////////////////////////////////////////////
+       
         var items = document.getElementById("all_data").querySelectorAll("#box");
         var search = document.getElementById('search');
         search.addEventListener('keyup',filter);
@@ -738,6 +793,29 @@ i.fa-chevron-right{
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// $(document).ready(function(){
+//     $('#search').keyup(function(){
+//         // $('#box').hide();
+//         var text = this.value;
+       
+//         if(text.replace(/\s/g, '').length)
+//         {
+//             console.log(text);
+//             $.ajax({
+//                 type: "POST",
+//                 url: "search.php",
+//                 data: { text : text },
+//                 success: function(data) {
+//                     $(data).appendTo('.all_data');
+//                 }
+//             });
+//         }
+//         // else{
+//         //     $("#searchresult").remove();
+//         //     $('#all_data').show();
+//         // }
+//     });
+// });
 </script>
 </body>
 </html>

@@ -74,7 +74,7 @@ include 'connect.php';
             padding:0 20px; 
         }
         #comments_print{
-            width:100%;
+            display:flex;
         }
         #like{
             margin-top:5px;
@@ -90,11 +90,13 @@ include 'connect.php';
             border-radius: 4px;
         }
         .all_comments_block{
-            margin:30px 10%;
-            border:1px solid silver;
+            margin:20px 20px;
             /* margin-left:10%;
             margin-right:10%; */
 
+        }
+        #comment_block{
+            width:100%;
         }
         #comment_block i{
             margin:10px 5px;
