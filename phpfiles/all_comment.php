@@ -21,107 +21,7 @@ include 'connect.php';
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="all_comment.css">
-    <style>
-        .header{
-            background-color:#fff;
-            box-shadow: 0px 4px 3px -3px rgba(0,0,0,0.45);
-            position:fixed;
-            top:0;
-        }
-        .main_content{
-            padding-top:60px;
-        }
-        .header .navcompare ul li a{
-            color:black;
-        }
-        .header .navcompare ul li:hover a{
-            color:#000;
-        }
-        .header .navcompare h1{
-            text-shadow: 1px 1px #000;
-        }
-        .header .navcompare h1 a{
-            color:black;
-        }
-
-        #list .current a{
-            color:#000;
-        }
-        #list li{
-            border-radius:4px;
-        }
-
-        #list input{
-            background:transparent;
-            border:none;
-        }
-        #comment_block{
-            
-            border-bottom:2px solid silver;
-            /* background-color:rgba(199, 197, 197,0.4); */
-        }
-        #username_comm{
-            display:inline;
-            font-size:26px;
-            padding:0px 20px;
-        }
-        #comm_date{
-            display:inline;
-            font-size:20px; 
-        }
-        #comment{
-            font-size:24px;
-            padding:0 20px; 
-        }
-        #comments_print{
-            display:flex;
-        }
-        #like{
-            margin-top:5px;
-            margin-left:15px;
-            font-size:28px;
-        }
-        #cancel{
-            width:30px;
-            height:30px;
-            border:none;
-            background:#3d0280;
-            color: #fff;
-            border-radius: 4px;
-        }
-        .all_comments_block{
-            margin:20px 20px;
-            /* margin-left:10%;
-            margin-right:10%; */
-
-        }
-        #comment_block{
-            width:100%;
-        }
-        #comment_block i{
-            margin:10px 5px;
-            color:red;
-            font-size:24px;
-        }
-        #show_device
-        {
-            margin-top:10px;
-            height:30px;
-            font-size:28px;
-        }
-        #comment_block #thumbs{
-            color:black;
-        }
-        .about{
-            margin-top:20%;
-            background-color:rgba(182, 181, 181, 0.3);
-        }
-        .searchbarforallcomment{
-            margin-top:40px;
-        }
-
-    </style>
-<title>DeviceRating | All Comments</title>
+    <title>DeviceRating | All Comments</title>
 
 </head>
 <body>
@@ -137,15 +37,33 @@ include 'connect.php';
             <li title="Rates & comments"><a href="compare.php">Rates & comments</a></li>
             <li title="All Comments" class="current"><a href="#">All Comments</a></li>
             <li title="About Us"><a href="#about">About Us</a></li>
-
         </ul>
     </nav>
 </header>
-<!-- <div class="drop">
-               <ul>
-                   <li class='dropDown' id="device_list"><input type="button" id="" value="Device list"></li>
-                </ul>
-    </div> -->
+
+<div class="main_head">
+    <div class="setting_show">
+      <i id="setting" class="fa fa-cog"></i>
+    </div>
+    <div class="settings">
+        <div> 
+            <a href='../firstpage.php'><input type='button' value='Home'></a> 
+        </div>
+        <div>
+            <a><input type="button" title="Device list" class='dropDown' id="device_list" value="Device list"></a>
+        </div> 
+        <div>   
+            <a href="compare.php"><input type="button"  title="Rates & comments" value="Rates & comments"></a>
+        </div>
+        <div>
+            <a href="#about"><input type="button"  title="About Us" value="About Us"></a>
+       </div>
+       <div>
+            <a href="#contact"><input type="button"  title="Contact us" value="Contact Us"></a>
+       </div>
+    </div>
+</div>
+
 <div class="main_content">    
     <div class="head" >
         <div class="searchbar searchbarforallcomment">
@@ -153,12 +71,12 @@ include 'connect.php';
             <i class="fa fa-search" aria-hidden="true"></i> 
         </div>    
     </div>
-    <i class="fas fa-bars" id="show_device"></i>
     <div class="aside" id="aside">
-           <input type="button" id="cancel" value="X">
             <div>
-            <h4 id="p" style="text-align:center; padding-top:70px;margin:20px 0px; font-size:20px;word-spacing:5px;">All devices rated till now present here.</h4>
+                <h4 id="p">All devices rated till now present here.</h4>
+
             <ul>
+            <li id="show_device_list"><input type="button" value="Device list"></li>
              <?php
                 if($count > 0)
                 {
@@ -203,7 +121,6 @@ include 'connect.php';
     
 
 <script>
-
     $(function() {
         $(window).on("scroll", function() {
             if($(window).scrollTop() > 75) {
@@ -213,10 +130,12 @@ include 'connect.php';
             }
         });
     });
+
  $(document).ready(function(){
     // $('.hidden').hide();
     $('#search_icon_on_header').hide();
-
+    $('#show_device_list').hide();
+    $('.main_head').hide();
     $('#device_list,#search_icon_on_header').click(function(){
         $('.hidden').show();  
         $('#p').show();
@@ -228,6 +147,28 @@ include 'connect.php';
         $('.hidden').hide();
         $('#p').hide();
     });
+
+    $('#show_device_list').click(function(){
+        $('.hidden').toggle();
+    });
+
+    $(window).resize(function(){
+        $('#show_device_list').hide();
+        $('.main_head').hide();
+        if($(window).width() < 1036)
+        {
+            $('.main_head').show();
+            $('.hidden').hide();
+            $('#show_device_list').show();
+        }
+    });
+    if($(window).width() < 1036)
+    {
+        $('.main_head').show();
+        $('.hidden').hide();
+        $('#show_device_list').show();
+    }
+   
 
  });
 
@@ -277,43 +218,6 @@ include 'connect.php';
             });
         } 
         
-    $(".aside").show();
-    $("#show_device").hide();
-
-    $("#cancel").on("click",function(){
-        $(".aside").hide();
-        $("#show_device").show();
-    });
-
-    $("#show_device").on("click",function(){
-      $(".aside").show();
-      $("#show_device").hide();
-    });
-
-        if ($(window).width() < 1000)
-        {
-           $(".head").hide();
-           $("#cancel").show();
-           
-        } else 
-        {
-            $(".head").show();
-            $("#cancel").hide();
-        }
-   
-    $(window).resize(function()
-     {
-        if ($(this).width() < 1100)
-        {
-            $(".head").hide();
-            $("#cancel").show();
-        } else   
-        {
-            $(".head").show();
-            $("#cancel").hide();
-        }
-    });
-    
     var i = 0;
     arr = [];
     function myFunction(x, temp){
@@ -335,6 +239,26 @@ include 'connect.php';
         x.style.fontSize = "25px";
     }
     }
+///////////////////////////////////////////////////////////////////////////////
+//////////////////////////setting right corner icon ////////////////////////////
+
+$(document).ready(function(){
+        $(".settings").hide();
+        $(".setting_show").click(function(){
+            $(".settings").toggle();
+            
+            $("#setting").toggleClass( "rotation");
+         
+            return false;
+        });
+    });
+
+    $(document).click(function() {
+        $(".settings").hide();
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 </script>
 </body>
 </html>

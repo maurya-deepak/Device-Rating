@@ -91,15 +91,28 @@
             </ul>
         </nav>
     </header>
-<div class="none" id="none">
-
-    <!-- <div class="hide_sign_up">
-        <input type="button" id="sign_up_in" value="Sign-in">
-    </div> -->
     
+<div class="main_head">
+    <div class="setting_show">
+      <i id="setting" class="fa fa-cog"></i>
+    </div>
+    <div class="settings">
+        <div> 
+            <a href='firstpage.php'><input type='button' class = 'current' value='Home'></a> 
+        </div>
+        <div>   
+            <a href="phpfiles/compare.php"><input type="button"  title="Rates & comments" value="Rates & comments"></a>
+        </div>
+        <div>
+            <a href="#about"><input type="button"  title="About Us" value="About Us"></a>
+       </div>
+       <div>
+            <a href="#contact"><input type="button"  title="Contact us" value="Contact Us"></a>
+       </div>
+    </div>
+</div>
+<div class="none" id="none">
   <h1 class="text-js">Look mum, I'm typing!</h1>
-  
-
     <div class="container" id="container">
         <div class="about_content">
             <div class="type-js headline">
@@ -224,10 +237,6 @@
 <footer class="footer">
     <h4>Connect with us on</h4>
     <div class="contact">
-        <!-- <a href="https://api.whatsapp.com/send" data-action="share/whatsapp/share" target="_blank" title="Whatsapp"><img src="images/what.jpg"></a>
-        <a href="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" title="Facebook"><img src="images/face.jpg"></a>
-        <a href="www.instagram.com" title="Instagram"><img src="images/insta.jpg"></a>
-        <a href="www.google.com" title="Google"><img src="images/google.jpg"></a>  -->
         <ul>
             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
             <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
@@ -237,9 +246,6 @@
     
     </div>
 </footer>
-
-<!-- <script type="text/javascript" src="header.js"></script> -->
-
 
 <script>
 
@@ -259,46 +265,6 @@
             alert("Please Log in");
         });
     });
-    
-
-    // $(document).click(function(){
-    //         $('.form').hide();
-    // });
-
-//      if ($(window).width() < 1100)
-//         {
-//             $('.hide_sign_up').show();
-//             $("#close_form").show();
-//             // $('.form').hide();
-//         } else 
-//         {
-//             $('.hide_sign_up').hide();
-//             // $('.form').show();
-//             $("#close_form").hide();
-//         }
-   
-//     $(window).resize(function()
-//      {
-//         if ($(this).width() < 1100)
-//         {
-//             $('.hide_sign_up').show();
-//             $("#close_form").show();
-//             // $('.form').hide();
-//         } else 
-//         {
-//             $('.hide_sign_up').hide();
-//             // $('.form').show();
-//             $("#close_form").hide();
-//         }
-//     });
-
-// $("#close_form").on("click",function(){
-//     $('.form').hide();
-// });
-
-// $("#sign_up_in").on("click",function(){
-//     $(".form").show();
-// });
 
 window.onload = changeImage;
 function popup() {
@@ -385,6 +351,35 @@ $(document).ready(function(){
   // The second paramter is the speed between each letter is typed.   
   autoType(".type-js",200);
 });
+//////////////////////////setting right corner icon ////////////////////////////
+$(document).ready(function(){
+        $(".settings").hide();
+        $('.main_head').hide();
+        $(".setting_show").click(function(){
+            $(".settings").toggle();
+            
+            $("#setting").toggleClass( "rotation");
+         
+            return false;
+        });
+        $(window).resize(function(){
+            $('.main_head').hide();
+            if($(window).width() < 1036)
+            {
+                $('.main_head').show();
+            }
+        });
+        if($(window).width() < 1036)
+        {
+            $('.main_head').show();
+        }
+});
+
+$(document).click(function() {
+    $(".settings").hide();
+s});
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 </body>
 </html>

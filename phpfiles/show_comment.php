@@ -18,13 +18,13 @@ if(isset($_POST['device_name']))
     while( $row = mysqli_fetch_assoc($result))
     {
         
-        echo "<div id='comment_block'><h3 id='username_comm'>".$row['username']."</h3><p id='comm_date'>On ".$row['com_date']."</h3><br>";
+        echo "<div id='comment_block'><h3 id='username_comm'>".$row['username']."</h3><p id='comm_date'>On ".$row['com_date']."</p><br>";
         for($i=0;$i<$row['rate_count'];$i++)
         {
-            echo "<i class='fa fa-star id='heart_show'></i>";
+            echo "<i class='fa fa-star' id='heart_show'></i>";
         }
         $temp = $temp + 1;
-        echo "<p id='comment'>".$row['comment']."</p>";
+        echo "<p>".$row['comment']."</p>";
         echo "<i id='thumbs' title = 'Like' onclick='myFunction(this, $temp)' class='fa fa-thumbs-up'></i>";
         $comment_id  = $row['id'];
        

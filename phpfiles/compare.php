@@ -593,8 +593,8 @@ font-size:12px;
             ?>
            
            </div>
-           <div class="searchbar">
-                <input type="button" id="add" value="Not find your device ? Add device">
+           <div class="add_device">
+                <a id="add" href="">Not find your device? add device here.</a>
            </div>
         </div>
 </div>
@@ -816,6 +816,19 @@ font-size:12px;
 //         // }
 //     });
 // });
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+$(document).ready(function(){
+
+    if($(window).width() < 1036)
+    {
+        $('.settings').prepend("<div id='home'> <a href='../firstpage.php'><input type='button' value='Home'></a> </div>");
+    }
+    else{
+        $('#home').remove();
+    }
+});
 </script>
 </body>
 </html>
