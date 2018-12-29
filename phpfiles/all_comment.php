@@ -27,8 +27,8 @@ include 'connect.php';
 <body>
 <header class="header"> 
     <nav class="nav navcompare">
-        <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-        <h1><a href="firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
+        <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
         <ul id="list">
             <li id="search_icon_on_header"><i class="fa fa-search"></i></li>
             <li title="Home"><a href="../firstpage.php">Home</a></li>
@@ -97,29 +97,27 @@ include 'connect.php';
 </div> 
 <div class="about" id="about">
     <h3>About Us</h3>
-    <p> I think that humans have a huge capacity to carry pain and sadness. <br>
-        There are things that haunt us our entire lives; we are unable to let them go. 
-        The good times seem almost effervescent and dreamlike in comparison with the times that didn't go so well.
+    <h5>Online Compare and Rate</h5>
+    <p>DeviceRating is the one stop destination to compare and rate gadgets, electronics online ranging from mobiles.</p><br>
+    <h5>Why comparison and Rating require?</h5>
+    <p> Mobile Phones nowadays have become the soul of your technical being, life without them is just not possible.From the latest and new models from Samsung, Lenovo, Apple to exclusive deals and offers like Xolo you have it all here. So planning to buy a new mobile visit our DeviceRating page and compare and rate the devices.
     </p>
 </div>
 <footer class="footer">
     <h4>Connect with us on</h4>
     <div class="contact">
-        <!-- <a href="https://api.whatsapp.com/send" data-action="share/whatsapp/share" target="_blank" title="Whatsapp"><img src="images/what.jpg"></a>
-        <a href="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" title="Facebook"><img src="images/face.jpg"></a>
-        <a href="www.instagram.com" title="Instagram"><img src="images/insta.jpg"></a>
-        <a href="www.google.com" title="Google"><img src="images/google.jpg"></a>  -->
         <ul>
             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
             <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
             <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             <li><a href="https://plus.google.com/discover"><i class="fab fa-google-plus"></i></a></li>
         </ul>
-    
+    </div>
+    <div>
+        <p>&copy:DeviceRating 2018</p>
     </div>
 </footer>
     
-
 <script>
     $(function() {
         $(window).on("scroll", function() {

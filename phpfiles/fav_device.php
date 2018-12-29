@@ -4,7 +4,7 @@ include 'connect.php';
 ?>
 <style>
     .main-list{
-        padding:100px;
+        padding-top:100px;
     }
     .main-list .heading{
         text-align:center;
@@ -56,7 +56,7 @@ include 'connect.php';
         border-bottom:5px dotted silver;
     }
     #comment_block h3,p{
-    display:inline;
+        display:inline;
     }
     #comment_block i{
         margin-top:10px;
@@ -66,6 +66,32 @@ include 'connect.php';
     }
     #comment_block p{
         font-size:20px;
+    }
+    @media screen and (max-width: 1280px){
+        .flex_data{
+            display:block;
+            margin:auto auto;
+        }
+        .image img{
+            width:100%;
+            height:100%;
+            background-size:cover; 
+         }
+         .all_comments_block{
+            margin:2px 2px;
+            padding:10px 10px; 
+         }
+         #back{
+            position:absolute;
+            right:10px;
+            padding:20px 20px;
+            text-decoration:none;
+            
+         }
+         #back a{
+            color:black;
+         }
+
     }
 
 </style>
@@ -83,8 +109,11 @@ include 'connect.php';
 <body>
 <header class="header" style="background-color:#fff;"> 
     <nav class="nav navcompare">
-        <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-        <h1><a href="firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        <div id="back">
+            <a href="compare.php" title="go back"><i class="fas fa-chevron-left"></i></a>
+        </div>
+        <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
+        <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
         <ul id="list">
             <li><a href="../firstpage.php">Home</a></li>
             <li id='Rate_comm'><a href="compare.php">Rates & comments</a></li>
@@ -126,11 +155,12 @@ include 'connect.php';
 </div>
 <!-- about section -->
 <div class="about" id="about">
-            <h3>About Us</h3>
-            <p>I think that humans have a huge capacity to carry pain and sadness. <br>
-            There are things that haunt us our entire lives; we are unable to let them go.
-           The good times seem almost effervescent and dreamlike in comparison with the times that didn't go so well.
-            </p>
+    <h3>About Us</h3>
+    <h5>Online Compare and Rate</h5>
+    <p>DeviceRating is the one stop destination to compare and rate gadgets, electronics online ranging from mobiles.</p><br><br>
+    <h5>Why comparison and Rating require?</h5>
+    <p>Mobile Phones nowadays have become the soul of your technical being, life without them is just not possible.From the latest and new models from Samsung, Lenovo, Apple to exclusive deals and offers like Xolo you have it all here.So planning to buy a new mobile visit our DeviceRating page and compare and rate the devices.
+    </p>
 </div>
 <!-- footer section -->
 <footer class="footer" id="contact">
@@ -142,6 +172,9 @@ include 'connect.php';
             <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             <li><a href="https://plus.google.com/discover"><i class="fab fa-google-plus"></i></a></li>
         </ul>
+    </div>
+    <div>
+        <p>&copy;:DeviceRating 2018</p>
     </div>
 </footer>
 
@@ -161,6 +194,21 @@ include 'connect.php';
             }
         });
     }
+    $(document).ready(function(){
+        $("#back").hide();
+        $(window).resize(function(){
+            $("#back").hide();
+            if($(window).width() < 1036){
+                $("#back").show();
+            }
+        });
+        if($(window).width() < 1036){
+                $("#back").show();
+            }
+            else{
+                $("#back").hide();
+            }
+    });
 
 </script>
 </body>

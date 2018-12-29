@@ -258,8 +258,8 @@ font-size:12px;
 <body>
 <header class="header"> 
     <nav class="nav navcompare">
-        <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-        <h1><a href="firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
+        <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
         <ul id="list">
         <div class="searchbar" id="full_width_searchbar">
             <input type="text" class="search" placeholder="search your devices" id="search">
@@ -391,7 +391,7 @@ font-size:12px;
         if(isset($_SESSION['comment']))
         {
             // prints on which device user commented
-            echo "<script>alert('Thank you for your rating and comment on ".$_SESSION['comment']."')</script>";
+            // echo "<script>alert('Thank you for your rating and comment on ".$_SESSION['comment']."')</script>";
             unset($_SESSION['comment']);
             // session_destroy();
         }
@@ -600,11 +600,12 @@ font-size:12px;
 </div>
 <!-- about section -->
 <div class="about" id="about">
-            <h3>About Us</h3>
-            <p>I think that humans have a huge capacity to carry pain and sadness. <br>
-            There are things that haunt us our entire lives; we are unable to let them go.
-           The good times seem almost effervescent and dreamlike in comparison with the times that didn't go so well.
-            </p>
+    <h3>About Us</h3>
+    <h5>Online Compare and Rate</h5>
+    <p>DeviceRating is the one stop destination to compare and rate gadgets, electronics online ranging from mobiles.</p><br>
+    <h5>Why comparison and Rating require?</h5>
+    <p> Mobile Phones nowadays have become the soul of your technical being, life without them is just not possible.From the latest and new models from Samsung, Lenovo, Apple to exclusive deals and offers like Xolo you have it all here. So planning to buy a new mobile visit our DeviceRating page and compare and rate the devices.
+    </p>
 </div>
 <!-- footer section -->
 <footer class="footer" id="contact">
@@ -616,6 +617,9 @@ font-size:12px;
             <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             <li><a href="https://plus.google.com/discover"><i class="fab fa-google-plus"></i></a></li>
         </ul>
+    </div>
+    <div>
+        <p>&copy:DeviceRating 2018</p>
     </div>
 </footer>
 <script type="text/javascript" src="rate.js"></script>
@@ -827,7 +831,7 @@ $(document).ready(function(){
     }
     else{
         $('#home').remove();
-    }
+    } 
 });
 </script>
 </body>

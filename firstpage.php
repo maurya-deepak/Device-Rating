@@ -13,7 +13,7 @@
     }
 ?>
 <style>
-.show_rate{
+.show_rate{s
     margin-top:30px;
 }
 .show_rate i{
@@ -143,7 +143,7 @@
                 <input type="button" class="button_input"  value="Sign in" name="submit-signin" id="sign-in">
             </div>
             <a href="sign_up_page.php"><input type="button" class="tosignup" name="signup" value="Not a member ? Sign Up"></a>
-            <a href="" class="tosignin">Forgot password?</a>
+            <a href="phpfiles/forgetPassword.php" class="tosignin">Forgot password?</a>
         </form>
     </div>
 </div>
@@ -229,9 +229,10 @@
     
 <div class="about" id="about">
     <h3>About Us</h3>
-    <p> I think that humans have a huge capacity to carry pain and sadness. <br>
-        There are things that haunt us our entire lives; we are unable to let them go. 
-        The good times seem almost effervescent and dreamlike in comparison with the times that didn't go so well.
+    <h5>Online Compare and Rate</h5>
+    <p>DeviceRating is the one stop destination to compare and rate gadgets, electronics online ranging from mobiles.</p><br>
+    <h5>Why comparison and Rating require?</h5>
+    <p> Mobile Phones nowadays have become the soul of your technical being, life without them is just not possible.From the latest and new models from Samsung, Lenovo, Apple to exclusive deals and offers like Xolo you have it all here. So planning to buy a new mobile visit our DeviceRating page and compare and rate the devices.
     </p>
 </div>
 <footer class="footer">
@@ -243,7 +244,9 @@
             <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             <li><a href="https://plus.google.com/discover"><i class="fab fa-google-plus"></i></a></li>
         </ul>
-    
+    </div>
+    <div>
+        <p>&copy;:DeviceRating 2018</p>
     </div>
 </footer>
 
@@ -377,7 +380,7 @@ $(document).ready(function(){
 
 $(document).click(function() {
     $(".settings").hide();
-s});
+});
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 </script>

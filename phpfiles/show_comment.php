@@ -18,7 +18,7 @@ if(isset($_POST['device_name']))
     while( $row = mysqli_fetch_assoc($result))
     {
         
-        echo "<div id='comment_block'><h3 id='username_comm'>".$row['username']."</h3><p id='comm_date'>On ".$row['com_date']."</p><br>";
+        echo "<div id='comment_block'><h3 id='username_comm'>".$row['username']."</h3><p id='comm_date'><i class='fa fa-clock' style='color:black;font-size:16px'></i> ".$row['com_date']."</p><br>";
         for($i=0;$i<$row['rate_count'];$i++)
         {
             echo "<i class='fa fa-star' id='heart_show'></i>";
