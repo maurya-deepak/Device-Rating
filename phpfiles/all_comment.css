@@ -8,33 +8,18 @@
     position:fixed;
     top:0;
 }
+#search_icon_on_header i{
+    margin-top:17px;
+}
 .main_content{
     padding-top:60px;
 }
-.header .navcompare ul li a{
-    color:black;
-}
-.header .navcompare ul li:hover a{
-    color:#000;
-}
-.header .navcompare h1{
-    text-shadow: 1px 1px #000;
-}
-.header .navcompare h1 a{
-    color:black;
-}
+
 
 #list .current a{
     color:#000;
 }
-#list li{
-    border-radius:4px;
-}
 
-#list input{
-    background:transparent;
-    border:none;
-}
 #comment_block{
     
     border-bottom:2px solid silver;
@@ -97,8 +82,15 @@
     margin-top:20%;
     background-color:rgba(182, 181, 181, 0.3);
 }
-.searchbarforallcomment{
-    margin-top:40px;
+.searchbar{
+    position: absolute;
+    top:70px;
+    left:26%;
+}
+.searchbar i{
+    position: absolute;
+    top:13px;
+    left:88%;
 }
 .settings div{
 text-align: center;
@@ -137,7 +129,6 @@ text-align: center;
     cursor: pointer;
     /* background-color: rgb(137, 136, 153); */
     background:gray;
-
     color:#fff;
 }
 .aside ul li input{
@@ -187,19 +178,15 @@ text-align: center;
 @media screen and (max-width: 1036px) {
     .aside{
         width:100%;
-        padding-top:5px; 
+        padding-top:100px; 
     }
     .aside #p{
-        padding-top:10px;
+        padding-top:60px;
     }
     .aside ul{
         display: block;
         width: 100%;
         text-align: center;
-    }
-    .searchbarforallcomment{
-       position: initial;
-       width: 100%;
     }
     .head{
         top:0;
@@ -207,13 +194,19 @@ text-align: center;
         margin:0;
         position: relative;
     } 
-    .searchbar .search{
-        margin-top:10px;
+    .searchbar{
+        display: block;
+        position: absolute;
+        top:0;
+    }
+    .searchbar input{
+        width:100%;
+        text-overflow: ellipsis;
     }
     .searchbar i{
         position: absolute;
-        top:20px;
-        left:87%;
+        top:15px;
+        left:85%;
     }
     #comments_print{
         display:block;

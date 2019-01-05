@@ -30,7 +30,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fontawesome-free-5.3.1-web/fontawesome-free-5.3.1-web/css/">
     <script src="../jquery-3.3.1.min.js"></script>
  
     <script>
@@ -81,14 +80,17 @@
 <body>
     <header class="header"> 
             <nav class="nav">
-                <a href="firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-                <h1><a href="firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
-            <ul id="list">
-                <li class="current"><a href="">Home</a></li>
-                <li><a href="sign_up_page.php">Join us</a></li>
-                <li><a href="phpfiles/compare.php">Rates & comments</a></li>
-                <li><a href="#about">About Us</a></li>
-            </ul>
+                <div>
+                    <h1><a href="firstpage.php"><img  src="images/comp.png" class="logo">Device<span style="color:#3d0280;">Rating</span></a></h1>
+                </div>
+                <div>
+                    <ul id="list">
+                        <li class="current"><a href="firstpage.php">Home</a></li>
+                        <li><a href="sign_up_page.php">Join us</a></li>
+                        <li><a href="phpfiles/compare.php">Rates & comments</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
         </nav>
     </header>
     
@@ -150,7 +152,7 @@
 
 <div class="information">
     <div class="info_head">
-     <h1>Top Trending Brands With Greate Features...</h1>
+     <h1>Top Trending Brands With Great Features...</h1>
     </div>
     <div class="main_info">
 

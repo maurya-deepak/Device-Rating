@@ -257,19 +257,20 @@ font-size:12px;
 </head>
 <body>
 <header class="header"> 
-    <nav class="nav navcompare">
-        <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-        <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
-        <ul id="list">
+    <nav class="nav">
+        <div>
+            <h1><a href="../firstpage.php"><img  src="images/comp.png" class="logo">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        </div>
         <div class="searchbar" id="full_width_searchbar">
             <input type="text" class="search" placeholder="search your devices" id="search">
             <i class = 'fa fa-search'></i>       
         </div>
-            <li><a href="../firstpage.php">Home</a></li>
-            <!-- <li><a href="sign_up_page.php">Join us</a></li> -->
-            <li class="current" id='Rate_comm'><a href="compare.php">Rates & comments</a></li>
-            <!-- <li id="li_about"><a href="#about">About Us</a></li> -->
-        </ul>
+        <div style="margin-right:25px">
+            <ul id="list">
+                <li><a href="../firstpage.php">Home</a></li>
+                <li  class="current"><a href="compare.php">Rates & comments</a></li>
+            </ul>
+        </div>
     </nav>
 </header>
 

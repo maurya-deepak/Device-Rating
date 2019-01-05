@@ -57,12 +57,15 @@ session_start();
 <body>
     <header class="header"style="background-color:#fff;"> 
         <nav class="nav">
-            <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-            <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
-        <ul id="list">
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#about">About Us</a></li>
-        </ul>
+        <div>
+            <h1><a href="../firstpage.php"><img  src="images/comp.png" class="logo">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        </div>
+        <div>
+            <ul id="list">
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+        </div>
         </nav>
     </header>
     <div class="message">

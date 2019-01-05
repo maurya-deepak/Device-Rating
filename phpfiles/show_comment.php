@@ -13,7 +13,7 @@ if(isset($_POST['device_name']))
     $row1 = mysqli_fetch_array($qRes);
     $alt_image = "this.src='../images/not-available.png';";
     echo "<div class='image'><img src=../images/".$row1[0]." alt='image not available' onError=".$alt_image."></div>";
-    echo "<div class='flexed_data'><h1 style='margin-left:30px;'>All comments and reviews</h1>";
+    echo "<div class='flexed_data'><h1 style='margin-left:30px;'>".$device_name."<br>All comments and reviews</h1>";
     echo "<div class='all_comments_block'>";
     while( $row = mysqli_fetch_assoc($result))
     {

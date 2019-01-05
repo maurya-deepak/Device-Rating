@@ -26,18 +26,20 @@ include 'connect.php';
 </head>
 <body>
 <header class="header"> 
-    <nav class="nav navcompare">
-        <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-        <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
+    <nav class="nav">
+        <div>
+            <h1><a href="../firstpage.php"><img  src="images/comp.png" class="logo">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        </div>
+        <div>
         <ul id="list">
             <li id="search_icon_on_header"><i class="fa fa-search"></i></li>
             <li title="Home"><a href="../firstpage.php">Home</a></li>
             <li title="Device list" class='dropDown' id="device_list"><a>Device list</a></li>
-            <!-- <li><a href="sign_up_page.php">Join us</a></li> -->
             <li title="Rates & comments"><a href="compare.php">Rates & comments</a></li>
             <li title="All Comments" class="current"><a href="#">All Comments</a></li>
             <li title="About Us"><a href="#about">About Us</a></li>
         </ul>
+        </div>
     </nav>
 </header>
 

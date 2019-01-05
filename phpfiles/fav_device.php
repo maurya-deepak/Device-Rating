@@ -112,13 +112,16 @@ include 'connect.php';
         <div id="back">
             <a href="compare.php" title="go back"><i class="fas fa-chevron-left"></i></a>
         </div>
-        <a href="../firstpage.php"><img  src="images/comp.png" class="logo"></a> 
-        <h1><a href="../firstpage.php">Device<span style="color:#3d0280;">Rating</span></a></h1>
-        <ul id="list">
-            <li><a href="../firstpage.php">Home</a></li>
-            <li id='Rate_comm'><a href="compare.php">Rates & comments</a></li>
-            <li id="li_about"><a href="#about">About Us</a></li>
-        </ul>
+        <div>
+            <h1><a href="../firstpage.php"><img  src="images/comp.png" class="logo">Device<span style="color:#3d0280;">Rating</span></a></h1>
+        </div>
+        <div>
+            <ul id="list">
+                <li><a href="../firstpage.php">Home</a></li>
+                <li id='Rate_comm'><a href="compare.php">Rates & comments</a></li>
+                <li id="li_about"><a href="#about">About Us</a></li>
+            </ul>
+        </div>
     </nav>
 </header>
 <div class="main-list">
